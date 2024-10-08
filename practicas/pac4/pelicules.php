@@ -22,10 +22,10 @@ $pelicules = [
         'genere' => 'Crimen, Drama',
         'trailer' => 'https://www.youtube.com/embed/p7DGH1lD95U',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Goodfellas+1',
-            'https://via.placeholder.com/800x400?text=Goodfellas+2',
-            'https://via.placeholder.com/800x400?text=Goodfellas+3',
-            'https://via.placeholder.com/800x400?text=Goodfellas+4'
+            'https://static1.srcdn.com/wordpress/wp-content/uploads/2022/09/Goodfellas-Funny-Guy-Scene.jpg',
+            'https://cdn.theatlantic.com/thumbor/ms9364tSAZ4NXF22WyxkgLyK7qU=/0x88:1110x712/960x540/media/img/mt/2015/09/goodfellas/original.jpg',
+            'https://media.timeout.com/images/102793667/image.jpg',
+            'https://uproxx.com/wp-content/uploads/2020/09/Goodfellas-Mailman.jpg'
         ],
         'valoracio' => 5
     ],
@@ -39,12 +39,12 @@ $pelicules = [
         'repartiment' => 'Al Pacino, Michelle Pfeiffer, Steven Bauer',
         'qualificacio' => '+16',
         'genere' => 'Crimen, Drama',
-        'trailer' => 'https://www.youtube.com/embed/He7IbXJy-Uk',
+        'trailer' => 'https://www.youtube.com/watch?v=vSp_kLkNdnE',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Scarface+1',
-            'https://via.placeholder.com/800x400?text=Scarface+2',
-            'https://via.placeholder.com/800x400?text=Scarface+3',
-            'https://via.placeholder.com/800x400?text=Scarface+4'
+            'https://miro.medium.com/v2/resize:fit:1400/0*ssqrxr54cuS3Q6iL',
+            'https://miro.medium.com/v2/resize:fit:800/1*Jw3Yv1gZfUxWjOMRQpgRJA.jpeg',
+            'https://fogsmoviereviews.files.wordpress.com/2013/05/scarface_37.png',
+            'https://static1.srcdn.com/wordpress/wp-content/uploads/2021/07/scarface-chainsaw-scene-bathroom.jpg'
         ],
         'valoracio' => 4
     ],
@@ -60,10 +60,10 @@ $pelicules = [
         'genere' => 'Crimen, Drama',
         'trailer' => 'https://www.youtube.com/embed/SBRv7-y3gb8',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=El+Padrino+II+1',
-            'https://via.placeholder.com/800x400?text=El+Padrino+II+2',
-            'https://via.placeholder.com/800x400?text=El+Padrino+II+3',
-            'https://via.placeholder.com/800x400?text=El+Padrino+II+4'
+            'https://i.ytimg.com/vi/znL8uYvohCw/maxresdefault.jpg',
+            'https://assets.mubicdn.net/images/film/1270/image-w856.jpg?1543371338',
+            'https://i.blogs.es/dc9a63/padrino-guion-3-minutos/1366_2000.jpeg',
+            'https://hips.hearstapps.com/hmg-prod/images/the-movie-the-godfather-part-ii-directed-by-francis-ford-news-photo-1578504569.jpg?crop=1xw:1xh;center,top&resize=980:*'
         ],
         'valoracio' => 5
     ],
@@ -79,10 +79,10 @@ $pelicules = [
         'genere' => 'Musical, Romance',
         'trailer' => 'https://www.youtube.com/embed/nRayUjXIDdQ',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=La+La+Land+1',
-            'https://via.placeholder.com/800x400?text=La+La+Land+2',
-            'https://via.placeholder.com/800x400?text=La+La+Land+3',
-            'https://via.placeholder.com/800x400?text=La+La+Land+4'
+            'https://i0.wp.com/swarthmorephoenix.com/wp-content/uploads/2023/03/Screen_Shot_2023-03-22_at_10.25.09_PM.png?fit=1382%2C924&ssl=1',
+            'https://ew.com/thmb/oUqjTHDzaSDwAhSmxnr8S0uQfvQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/la-la-land2-2000-cdc386889c1a42409110b5c45604429d.jpg',
+            'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhri2hqJbcJgu6VDyCY6XTTNMQmIxZQC8Dp-sPn0-8jq5IDyq2EwAZ4N1Ti9IQy7q-uC4Id9DINocxG3TFvA_1Le4dfqzMYhJbxoq-cTRA67fEneuEOxCVsJFLZvHSkjtUw16kH/s1600/La-La-Land.png',
+            'https://www.filmmattersmagazine.com/wp-content/uploads/2017/10/Shabani-1.jpg'
         ],
         'valoracio' => 4
     ],
@@ -98,10 +98,10 @@ $pelicules = [
         'genere' => 'Drama, Thriller',
         'trailer' => 'https://www.youtube.com/embed/FzNFDRgA0wk',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Taxi+Driver+1',
-            'https://via.placeholder.com/800x400?text=Taxi+Driver+2',
-            'https://via.placeholder.com/800x400?text=Taxi+Driver+3',
-            'https://via.placeholder.com/800x400?text=Taxi+Driver+4'
+            'https://static1.srcdn.com/wordpress/wp-content/uploads/2020/02/Travis-in-Taxi-Driver-3.jpg',
+            'https://i.ytimg.com/vi/cRya0BMickE/sddefault.jpg',
+            'https://pyxis.nymag.com/v1/imgs/7f8/5f4/7c0c8b26d162fd6c6b50ba7c4fd78d1f06-01-steve-schapiro-taxi-driver.1x.rsocial.w1200.jpg',
+            'https://static1.srcdn.com/wordpress/wp-content/uploads/Best-Unscripted-Movie-Scenes-Taxi-Driver-Mirror.jpg'
         ],
         'valoracio' => 5
     ],
@@ -117,10 +117,10 @@ $pelicules = [
         'genere' => 'Drama, Fantasía',
         'trailer' => 'https://www.youtube.com/embed/hBtSF4-cnzk',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=La+milla+verde+1',
-            'https://via.placeholder.com/800x400?text=La+milla+verde+2',
-            'https://via.placeholder.com/800x400?text=La+milla+verde+3',
-            'https://via.placeholder.com/800x400?text=La+milla+verde+4'
+            'https://i.blogs.es/01e577/la-20milla-20verde-20michael-20clarke-20duncan/650_1200.jpg',
+            'https://i.ytimg.com/vi/_z4FAKwzArw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AHUBoAC4AOKAgwIABABGHIgTigtMA8=&rs=AOn4CLAgdiHC3GVkDG_KgdFKqWz9rhhH4g',
+            'https://media.gq.com.mx/photos/5f5250fb4464f9b88fb264c7/master/pass/GREEN.jpg',
+            'https://amcselekt.es/blog/wp-content/uploads/2020/06/The-Green-Mile.jpg'
         ],
         'valoracio' => 5
     ],
@@ -136,10 +136,10 @@ $pelicules = [
         'genere' => 'Horror, Suspenso',
         'trailer' => 'https://www.youtube.com/embed/FRW3K0LlsD0',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Insidious+1',
-            'https://via.placeholder.com/800x400?text=Insidious+2',
-            'https://via.placeholder.com/800x400?text=Insidious+3',
-            'https://via.placeholder.com/800x400?text=Insidious+4'
+            'https://static1.moviewebimages.com/wordpress/wp-content/uploads/2023/07/insidious-l.jpg',
+            'https://i.ytimg.com/vi/gGdbaYda1j4/maxresdefault.jpg',
+            'https://static1.srcdn.com/wordpress/wp-content/uploads/2020/05/insiddious-promo.jpg',
+            'https://bloody-disgusting.com/wp-content/uploads/2023/04/insid.jpg'
         ],
         'valoracio' => 4
     ],
@@ -155,10 +155,10 @@ $pelicules = [
         'genere' => 'Horror, Suspenso',
         'trailer' => 'https://www.youtube.com/embed/-tH8TQnHH-4',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Insidious+Chapter+2+1',
-            'https://via.placeholder.com/800x400?text=Insidious+Chapter+2+2',
-            'https://via.placeholder.com/800x400?text=Insidious+Chapter+2+3',
-            'https://via.placeholder.com/800x400?text=Insidious+Chapter+2+4'
+            'https://cdn2.sbnation.com/assets/3216511/insidious_chapter218_1020.jpg',
+            'https://static1.moviewebimages.com/wordpress/wp-content/uploads/2023/07/insidious-chapter-2-bride-in-black.jpeg',
+            'https://images.filmibeat.com/img/2013/11/15-insidious-chapter-2-review.jpg',
+            'https://www.gamespot.com/a/uploads/original/1757/17577455/4161988-further_041423_bm_25706_r.jpg'
         ],
         'valoracio' => 4
     ],
@@ -174,10 +174,10 @@ $pelicules = [
         'genere' => 'Animación, Acción',
         'trailer' => 'https://www.youtube.com/embed/b_yMOiRgMmQ',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Spider-Verse+1',
-            'https://via.placeholder.com/800x400?text=Spider-Verse+2',
-            'https://via.placeholder.com/800x400?text=Spider-Verse+3',
-            'https://via.placeholder.com/800x400?text=Spider-Verse+4'
+            'https://hips.hearstapps.com/hmg-prod/images/spider-man-across-the-spiderverse-1670500626.jpg?crop=0.747xw:1.00xh;0.127xw,0',
+            'https://statcdn.fandango.com/MPX/image/NBCU_Fandango/348/775/SpiderverseTr.jpg',
+            'https://media.newyorker.com/photos/64889828ef09d4a0e04c759c/16:9/w_1280,c_limit/Bert-Spider-Verse.jpg',
+            'https://i0.wp.com/www.thewrap.com/wp-content/uploads/2023/06/Spider-Man-Across-the-Spider-Verse.jpg?fit=1200%2C675&ssl=1'
         ],
         'valoracio' => 5
     ],
@@ -193,10 +193,10 @@ $pelicules = [
         'genere' => 'Drama, Deportes',
         'trailer' => 'https://www.youtube.com/embed/yw18pL2V9xQ',
         'carusel' => [
-            'https://via.placeholder.com/800x400?text=Rocky+1',
-            'https://via.placeholder.com/800x400?text=Rocky+2',
-            'https://via.placeholder.com/800x400?text=Rocky+3',
-            'https://via.placeholder.com/800x400?text=Rocky+4'
+            'https://variety.com/wp-content/uploads/2020/06/rocky-i-apollo-creed.jpg?w=684',
+            'https://www.looper.com/img/uploads/2016/03/rockyunscriptedfeatured-1380x620_rev1.jpg',
+            'https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/0d52e4c6-b40e-433d-aaba-ba00054cb2b3/sylvester-stallone-shares-behind-the-scenes-footage-from-the-making-of-rocky-ii.jpg',
+            'https://miro.medium.com/v2/resize:fit:950/1*TJc38KGV7-2I57PHGeZEPw.jpeg'
         ],
         'valoracio' => 5
     ]
