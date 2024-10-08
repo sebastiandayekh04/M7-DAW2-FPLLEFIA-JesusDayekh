@@ -20,7 +20,7 @@ $pelicules = [
         'repartiment' => 'Ray Liotta, Robert De Niro, Joe Pesci',
         'qualificacio' => '+16',
         'genere' => 'Crimen, Drama',
-        'trailer' => 'https://www.youtube.com/embed/p7DGH1lD95U',
+        'trailer' => 'https://www.youtube.com/embed/QH2-cqjfwJ0',
         'carusel' => [
             'https://static1.srcdn.com/wordpress/wp-content/uploads/2022/09/Goodfellas-Funny-Guy-Scene.jpg',
             'https://cdn.theatlantic.com/thumbor/ms9364tSAZ4NXF22WyxkgLyK7qU=/0x88:1110x712/960x540/media/img/mt/2015/09/goodfellas/original.jpg',
@@ -39,7 +39,7 @@ $pelicules = [
         'repartiment' => 'Al Pacino, Michelle Pfeiffer, Steven Bauer',
         'qualificacio' => '+16',
         'genere' => 'Crimen, Drama',
-        'trailer' => 'https://www.youtube.com/watch?v=vSp_kLkNdnE',
+        'trailer' => 'https://www.youtube.com/embed/vSp_kLkNdnE',
         'carusel' => [
             'https://miro.medium.com/v2/resize:fit:1400/0*ssqrxr54cuS3Q6iL',
             'https://miro.medium.com/v2/resize:fit:800/1*Jw3Yv1gZfUxWjOMRQpgRJA.jpeg',
@@ -115,7 +115,7 @@ $pelicules = [
         'repartiment' => 'Tom Hanks, Michael Clarke Duncan, David Morse',
         'qualificacio' => '+16',
         'genere' => 'Drama, Fantasía',
-        'trailer' => 'https://www.youtube.com/embed/hBtSF4-cnzk',
+        'trailer' => 'https://www.youtube.com/embed/WieEyu5KDbE',
         'carusel' => [
             'https://i.blogs.es/01e577/la-20milla-20verde-20michael-20clarke-20duncan/650_1200.jpg',
             'https://i.ytimg.com/vi/_z4FAKwzArw/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AHUBoAC4AOKAgwIABABGHIgTigtMA8=&rs=AOn4CLAgdiHC3GVkDG_KgdFKqWz9rhhH4g',
