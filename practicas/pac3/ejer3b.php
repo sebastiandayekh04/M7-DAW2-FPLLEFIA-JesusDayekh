@@ -21,7 +21,7 @@ if (isset($_GET['fruta'])) {
     $fruta_seleccionada = $_GET['fruta'];
     
     // Actualiza el estado de la fruta seleccionada
-    foreach ($frutas as &$fruta) {
+    foreach ($frutas as $fruta) {
         if ($fruta['fruta'] == $fruta_seleccionada) {
             $fruta['estado'] = true; // Marca la fruta seleccionada como 'true'
         } else {
