@@ -1,5 +1,5 @@
 <?php 
-
+include 'index.php';
 // Array multidimensional amb la informació de cada casa
 $casas_info = [
     "Gryffindor" => [
@@ -31,6 +31,14 @@ $casas_info = [
     "image" => ""
     ]
     ];
+
+    $casas_info[$casa_seleccionada]['clau'];
+
+    $casas = array_keys($casas_info);
+    $casa_seleccionada = $casas[array_rand($casas)];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +53,11 @@ $casas_info = [
 <div class="container text-center">
 <h1>¡Benvingut a (LA CASA QUE HAGI TOCAT)</h1>
 <div class="welcome-message mt-4">
-<?php 
-    $nombre = $_POST['nombre'];
-    $apellido   = $_POST['apellido'];
-    
-    echo "su nombre es:" .$nombre. "y su edad es: " .$apellido ;
-?>
+    <h1> Benvigut a <?php echo $casa_seleccionada; ?></h1>
+    <p><?php echo $casas_info['welcome_message']; ?></p>
+    <p><?php echo $nombre ." ".$apellido . ", has estat seleccionat per la casa" . $casa_seleccionada; ?></p>
 </div>
+<img src="<?php echo $casas_info['image']; ?>" alt="Escudo de harry potter" class="mt-4">
 </div>
 </body>
 </html>

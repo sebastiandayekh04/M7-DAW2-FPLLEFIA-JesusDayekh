@@ -10,13 +10,18 @@
 <div class="container">
 <h1 class="text-center mb-4">Benvinguts a Hogwarts</h1>
 <form action="bienvenida.php" method="post">
+    <div class="mb-3"> 
     <label> Nombre: </label>
     <input type="text" name="nombre">
+    </div>
     <br>
+    <div class="mb-3">
     <form action="bienvenida.php" method="post">
     <label> Apellido: </label>
+    <div class="btn btn-primary">
     <input type="text" name="apellido">
-    <br>
+    </div>
+    </div>
 </form>
 </div>
 </body>
