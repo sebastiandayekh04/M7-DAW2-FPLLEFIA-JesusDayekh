@@ -15,15 +15,12 @@
     <input type="text" name="nombre">
     </div>
     <br>
-    <div class="mb-3">
-    <form action="bienvenida.php" method="post">
+    <div>
     <label> Apellido: </label>
     <div class="mb-3">
     <input type="text" name="apellido">
     </div>
-    <div class="btn btn-primary"> <button input type="submit" value="post" >Enviar info</button></div>
-    
-    </div>
+     <button type="submit" value="post" class="btn btn-primary" >Enviar info</button>
 </form>
 </div>
 </body>
