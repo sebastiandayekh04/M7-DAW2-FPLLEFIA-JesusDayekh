@@ -18,9 +18,11 @@
     <div class="mb-3">
     <form action="bienvenida.php" method="post">
     <label> Apellido: </label>
-    <div class="btn btn-primary">
+    <div class="mb-3">
     <input type="text" name="apellido">
     </div>
+    <div class="btn btn-primary"> <button input type="submit" value="post" >Enviar info</button></div>
+    
     </div>
 </form>
 </div>
