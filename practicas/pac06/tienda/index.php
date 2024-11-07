@@ -42,7 +42,7 @@ include './data/productos.php';
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- 41 - Aquí va la información de contacto -->
+      <?php muestraInfoContacto($nombre, $numero, $foto) ?>
       </div>
     </div>
   </div>

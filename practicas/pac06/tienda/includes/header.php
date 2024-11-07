@@ -21,7 +21,7 @@ style="height: 50px;">
     ?>
     <div class="d-flex align-items-center">
     <h1 class="me-3 mb-0 px-4">Bienvenido <?php echo $nombre ?> </h1>
-    <h2>Tu numero de celular es: <?php echo $numero ?></h2>
+    <h5>Tu numero de celular es: <?php echo $numero ?></h5>
     <div>
     <img src="<?php echo $foto; ?>" alt="Foto Cliente" class="rounded-circle"
     style="width: 50px; height: 50px;">

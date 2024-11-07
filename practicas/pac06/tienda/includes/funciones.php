@@ -1,7 +1,7 @@
 <?php 
 function muestraInfoContacto($nombre, $numero, $foto) {
     // Puedes retornar los datos en formato HTML para mostrar la información de contacto
-    return '
+    echo '
         <div>
             <img src="' . $foto . '" alt="Foto de ' . $nombre . '" width="100">
             <p>Nombre: ' . $nombre . '</p>
@@ -32,9 +32,9 @@ function generarTablaProductos($productos) {
             <td>' . $producto['precio'] . '</td>
             <td>';
             if($producto['disponibilidad'] == true){
-                echo '<div class="bg-success p-5">En stock </div>';
+                echo '<div class="bg-success ">En stock </div>';
             }else{
-                echo '<div class="bg-danger p-5"> Agotado</div>';
+                echo '<div class="bg-danger"> Agotado</div>';
             }'</td>
         </tr>';
     }
