@@ -1,32 +1,39 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>header</title>
-</head>
-<body>
+
+
+
+
+
+
+<header class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<div class="container-fluid d-flex justify-content-between">
+
+<a class="navbar-brand" href="index.php">
+<img src="https://mirasol-centre.com/nousite/wp-content/uploads/2017/05/logo-Mercadona.png" alt="logo-mercadona" class="img-fluid"
+style="height: 50px;">
+ </a>
+
+ <div>
     <?php 
-       $Nombre = $_POST['nombre'];
-       $Numero = $_POST['Numero'];
-       $Foto = $_POST['URL'];
+       $nombre = $_POST['nombre'];
+       $numero = $_POST['numero'];
+       $foto = $_POST['URL'];
     ?>
-
-    <h1>Bienvenido <?php echo $Nombre ?> </h1>
-  
-    
-
-    <p>Tu numero de celular es: <?php echo $Numero ?></p>
-
+    <div class="d-flex align-items-center">
+    <h1 class="me-3 mb-0 px-4">Bienvenido <?php echo $nombre ?> </h1>
+    <h2>Tu numero de celular es: <?php echo $numero ?></h2>
     <div>
-    <img src="<?php echo $Foto ; ?>" alt="Foto Cliente" class="mt-4">
+    <img src="<?php echo $foto; ?>" alt="Foto Cliente" class="rounded-circle"
+    style="width: 50px; height: 50px;">
     </div>
-</body>
-</html>
+    </div>
 
-<?php 
-  var_dump($Nombre);
-  var_dump($Numero);
-  var_dump($Foto);
-?>
+      <button class="navbar-toggler" type="button" data-bs-
+  toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-
+  expanded="false" aria-label="Toggle navigation">
+
+  <span class="navbar-toggler-icon"> </span>
+  </button>
+
+    </div>
+  </header>
