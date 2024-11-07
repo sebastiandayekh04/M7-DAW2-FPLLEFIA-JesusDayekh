@@ -14,11 +14,11 @@ style="height: 50px;">
  </a>
 
  <div>
-    <?php 
-       $nombre = $_POST['nombre'];
-       $numero = $_POST['numero'];
-       $foto = $_POST['URL'];
-    ?>
+  <?php
+  $nombre = $_POST['nombre'];
+  $numero = $_POST['numero'];
+  $foto = $_POST['URL'];
+  ?>
     <div class="d-flex align-items-center">
     <h1 class="me-3 mb-0 px-4">Bienvenido <?php echo $nombre ?> </h1>
     <h5>Tu numero de celular es: <?php echo $numero ?></h5>
