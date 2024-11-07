@@ -19,15 +19,15 @@ $productos  = [
     ],
 
     [
-        "nombre" => "Buñuelo",
-        "precio" => 20.00,
-        "disponibilidad" => false,
+        "nombre" => "Pan de Jamon",
+        "precio" => 30.00,
+        "disponibilidad" => true,
     ],
 
     [
-        "nombre" => "Buñuelo",
-        "precio" => 20.00,
-        "disponibilidad" => false,
+        "nombre" => "Pavo",
+        "precio" => 40.00,
+        "disponibilidad" => true,
     ],
 ];
 
