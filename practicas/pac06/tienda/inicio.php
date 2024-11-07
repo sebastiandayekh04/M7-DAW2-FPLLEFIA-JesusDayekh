@@ -12,13 +12,13 @@
     <div>
         <label> Nombre: </label>
         <div class="mb-3">
-        <input type="text" name="apellido">    
+        <input type="text" name="nombre">    
     </div>
 
     <div>
         <label> Numero de celular: </label>
         <div class="mb-3">
-        <input type="number" name="Numero">
+        <input type="text" name="numero">
     </div>
 
     <div>
@@ -27,7 +27,7 @@
         <input type="text" name="URL">
     </div>
 
-    <button type="submit" value="post" class="btn btn-primary" >Enviar info</button>
+    <button type="submit" class="btn btn-primary" >Enviar info</button>
     </form>
 </body>
 </html>

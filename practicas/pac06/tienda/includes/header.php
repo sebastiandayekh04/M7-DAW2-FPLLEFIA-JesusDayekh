@@ -1,4 +1,3 @@
-//mostrar nombre, telefono y foto mediante a header
 
 <!DOCTYPE html>
 <html lang="en">
