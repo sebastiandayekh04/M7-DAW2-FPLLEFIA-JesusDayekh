@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+$_SESSION['current_room'] = $_POST['answer'];
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@ session_start();
 <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="width: 22rem;">
         <h2 class="card-title text-center">Habitación 1</h2>
+       
         <p class="card-text"> </p>
         <form method="POST">
             <div class="mb-3">

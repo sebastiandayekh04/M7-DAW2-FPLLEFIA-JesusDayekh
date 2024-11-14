@@ -19,7 +19,7 @@ session_destroy();
             <div class="mb-3">
                 <input type="text" name="answer" class="form-control" required placeholder="Respuesta">
             </div>
-            <button type="submit" class="btn btn-success w-100">Enviar</button>
+            <button type="submit" class="btn btn-success w-100" exit>Enviar</button>
         </form>
         <?= $message; ?> <!-- Muestra el mensaje de éxito o error -->
     </div>

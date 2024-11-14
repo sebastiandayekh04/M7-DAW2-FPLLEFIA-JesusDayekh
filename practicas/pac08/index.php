@@ -4,6 +4,8 @@ if (isset($_GET['username']) && isset($_GET['dificultad'])) {
 
     $_SESSION['username'] = $_POST['username'];
     $_SESSION['dificultad'] = $_POST['dificultad'];
+    $_SESSION['apellido'] = $_POST['apellido'];
+    $_SESSION['foto'] = $_POST['foto'];
 }
 
 ?>
@@ -23,6 +25,14 @@ if (isset($_GET['username']) && isset($_GET['dificultad'])) {
             <div class="mb-3">
                 <label for="username" class="form-label">Nombre:</label>
                 <input type="text" name="username" id="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="text" name="apellido" id="apellido" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="foto" class="form-label">Foto:</label>
+                <input type="text" name="foto" id="foto" class="form-control" required>
             </div>
             <div class="mb-3">
                 <label for="dificultad" class="form-label">Nivel de Dificultad:</label>
