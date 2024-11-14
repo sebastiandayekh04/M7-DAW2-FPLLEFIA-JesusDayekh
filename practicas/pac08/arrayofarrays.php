@@ -46,7 +46,7 @@ $preguntasChampions = [
 
 function inyectarpregunta(){
     if($_SESSION['dificultad'] == "facil"){
-
+        $preguntasChampions['facil']
     }else if($_SESSION['dificultad'] == "medio"){
     
     }else if($_SESSION['dificultad'] == "dificil"){
