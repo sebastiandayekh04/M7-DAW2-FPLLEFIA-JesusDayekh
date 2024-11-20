@@ -43,26 +43,4 @@ $preguntasChampions = [
         ]
     ]
 ];
-/*
-function inyectarpregunta(){
-    if($_SESSION['dificultad'] == "facil"){
-        $preguntasChampions['facil']
-    }else if($_SESSION['dificultad'] == "medio"){
-    
-    }else if($_SESSION['dificultad'] == "dificil"){
-    
-    }
-
-}
-
-function validez(){
-    if( $_SESSION['current_room'] == 3){
-        "<div class="alert alert-success mt-3">¡Felicidades! ¡Has completado el juego!</div>"
-    } else if($_SESSION['current_room']) {
-        "<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>"
-    }
-}
-
-
-*/
 ?>
