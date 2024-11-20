@@ -34,7 +34,7 @@ if (isset($_POST['username']) && isset($_POST['dificultad']) && isset($_POST['ap
             </div>
             <div class="mb-3">
                 <label for="foto" class="form-label">Foto:</label>
-                <input type="text" name="foto" id="foto" class="form-control" required>
+                <input type="text" name="foto" id="foto" class="form-control">
             </div>
             <div class="mb-3">
                 <label for="dificultad" class="form-label">Nivel de Dificultad:</label>

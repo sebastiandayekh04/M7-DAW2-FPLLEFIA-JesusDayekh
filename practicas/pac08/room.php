@@ -8,8 +8,9 @@ $_SESSION['current-room'] = $_SESSION['current-room']+1 ;
 //print_r($preguntasChampions[$_SESSION['dificultad']][0]['pregunta']);
 if ($_SESSION['answer'] == $preguntasChampions[$_SESSION['dificultad']][0]['respuesta']){
     header('Location: room2.php');
-}
-
+} else if ($_SESSION['answer']) {
+   echo"<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>";
+}; 
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +35,7 @@ if ($_SESSION['answer'] == $preguntasChampions[$_SESSION['dificultad']][0]['resp
             </div>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
-                <?php  if ($_SESSION['answer'] == $preguntasChampions[$_SESSION['dificultad']][0]['respuesta']){
-                     
-        }else {
-            echo"<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>
-        ";
-        }; ?> <!-- Muestra el mensaje de éxito o error -->
+               <!-- Muestra el mensaje de éxito o error -->
     </div>
 </body>
 </html>
