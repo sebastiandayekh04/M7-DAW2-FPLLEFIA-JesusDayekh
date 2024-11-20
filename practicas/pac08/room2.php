@@ -13,7 +13,7 @@ session_start();
 <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="width: 22rem;">
         <h2 class="card-title text-center">Habitación 2</h2>
-        <p class="card-text"></p>
+        <p class="card-text"> <?php echo $preguntasChampions[$_SESSION['dificultad']][1]['pregunta'] ?></p>
         <form method="POST">
             <div class="mb-3">
                 <input type="text" name="answer" class="form-control" required placeholder="Respuesta">

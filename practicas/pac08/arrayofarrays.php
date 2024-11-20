@@ -43,7 +43,7 @@ $preguntasChampions = [
         ]
     ]
 ];
-
+/*
 function inyectarpregunta(){
     if($_SESSION['dificultad'] == "facil"){
         $preguntasChampions['facil']
@@ -62,4 +62,7 @@ function validez(){
         "<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>"
     }
 }
+
+
+*/
 ?>
