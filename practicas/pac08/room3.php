@@ -1,17 +1,21 @@
 <?php 
 session_start();
+include "arrayofarrays.php";
 
-$_SESSION['answer'] = $_POST['answer'];
-$_SESSION['current-room'] = $_SESSION['current-room']+1 ;
-
-
-if ($_SESSION['answer'] == $preguntasChampions[$_SESSION['dificultad']][2]['respuesta']){
-    echo"<div class='alert alert-success mt-3'>¡Felicidades! ¡Has completado el juego!</div>";
-} else if ($_SESSION['answer']) {
-    echo"<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>";
+$respuestaroom3 = $preguntasChampions[$_SESSION['dificultad']][2]['respuesta'];
+$respuestausuario3 = $_POST['answer'];
+if(isset($respuestausuario3) && !empty($respuestausuario3)){
+if ($respuestausuario3 == $respuestaroom3){
+    $mensaje = "<div class='alert alert-success mt-3'>¡Felicidades! ¡Has completado el juego!</div>";
+   // session_destroy();
+} else  {
+    $mensaje="<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>";
 }; 
-session_destroy();
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

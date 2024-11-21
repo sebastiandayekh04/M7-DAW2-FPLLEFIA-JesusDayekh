@@ -8,6 +8,7 @@ if (isset($_POST['username']) && isset($_POST['dificultad']) && isset($_POST['ap
     $_SESSION['foto'] = $_POST['foto'];
 
     header('Location: room.php');
+    exit;
 }
 
 ?>

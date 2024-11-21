@@ -2,15 +2,17 @@
 session_start();
 include "arrayofarrays.php";
 
-$_SESSION['answer'] = $_POST['answer'];
-$_SESSION['current-room'] = $_SESSION['current-room']+1 ;
-
-//print_r($preguntasChampions[$_SESSION['dificultad']][0]['pregunta']);
-if ($_SESSION['answer'] == $preguntasChampions[$_SESSION['dificultad']][0]['respuesta']){
-    header('Location: room2.php');
-} else if ($_SESSION['answer']) {
-   echo"<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>";
-}; 
+ $respuestaroom1 = $preguntasChampions[$_SESSION['dificultad']][0]['respuesta'];
+ $respuestausuario1 = $_POST['answer'];
+ 
+if(isset($respuestausuario1) && !empty($respuestausuario1)){
+    if ($respuestausuario1 == $respuestaroom1){
+        header('Location: room2.php');
+        exit;
+    } else {
+    $mensaje = "<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>";
+    }; 
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ if ($_SESSION['answer'] == $preguntasChampions[$_SESSION['dificultad']][0]['resp
             </div>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
-               <!-- Muestra el mensaje de éxito o error -->
+        <?php $mensaje ?>  <!-- Muestra el mensaje de éxito o error -->
     </div>
 </body>
 </html>
