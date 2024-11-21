@@ -7,7 +7,7 @@ $respuestausuario3 = $_POST['answer'];
 if(isset($respuestausuario3) && !empty($respuestausuario3)){
 if ($respuestausuario3 == $respuestaroom3){
     $mensaje = "<div class='alert alert-success mt-3'>¡Felicidades! ¡Has completado el juego!</div>";
-   // session_destroy();
+   session_destroy();
 } else  {
     $mensaje="<div class='alert alert-danger mt-3'>Respuesta incorrecta. ¡Inténtalo de nuevo!</div>";
 }; 
@@ -35,7 +35,7 @@ if ($respuestausuario3 == $respuestaroom3){
             </div>
             <button type="submit" class="btn btn-success w-100" exit>Enviar</button>
         </form>
-        <?= $message; ?> <!-- Muestra el mensaje de éxito o error -->
+        <?= $mensaje; ?> <!-- Muestra el mensaje de éxito o error -->
     </div>
 </body>
 </html>

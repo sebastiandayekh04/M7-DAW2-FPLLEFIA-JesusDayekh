@@ -37,7 +37,7 @@ if(isset($respuestausuario1) && !empty($respuestausuario1)){
             </div>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
-        <?php $mensaje ?>  <!-- Muestra el mensaje de éxito o error -->
+        <?= $mensaje ?>  <!-- Muestra el mensaje de éxito o error -->
     </div>
 </body>
 </html>
