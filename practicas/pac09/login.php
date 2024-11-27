@@ -13,24 +13,28 @@ $usuarios = [
     ["username" => "lucia", "password" => "luciapass", "role" => "admin"]
 ];
 
+
 // Procesamiento del formulario.
-if ($_SERVER['REQUEST_METHOD'] === $_POST){
-    $_SESSION['username'] == $_POST['username'];
-    $_SESSION['password'] == $_POST['password'];
-    $_SESSION['img'] == $_POST['img'];
-    $_SESSION['role'] ;
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['password'] = $_POST['password'];
+    $_SESSION['img'] = $_POST['img'];
 }
 
     // Validación de credenciales.
-   if(isset($_SESSION['username']) === $usuarios['username']  && ($_SESSION['password']) === $usuarios['password'] ){
+    if (isset($_POST['username'])  && isset($_POST['password'])) {
+  
         foreach ($usuarios as $usuario){
-            $_SESSION['role'] ==$usuarios['role'];
-            header(location);
-            exit;
+            if($usuario['username'] === $_POST['username']  && ($usuario['password']) === $_POST['password'] ){
+                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['role'] = $usuario['role'];
+                $_SESSION['img'] = $_POST['img'];
+                header('Location:home.php');
+                exit;
         }
-   } else{
+    }
     $error = "<div class='alert alert-danger mt-3'>Usuario o contraseña incorrecta. ¡Inténtalo de nuevo!</div>";
-   }
+   } 
   
 
 ?>
@@ -66,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === $_POST){
                        
                     </div>
                     <div class="inputBox ">
-                        <input class="p-2 m-2" placeholder="Foto de perfil" type="text" name="img" id="img" required>
+                        <input class="p-2 m-2" placeholder="Foto de perfil" type="text" name="img" id="img">
                        
                     </div>
                     <?php if (!empty($error)) : ?>

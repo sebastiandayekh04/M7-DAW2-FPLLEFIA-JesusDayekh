@@ -1,7 +1,11 @@
 <?php
-
+session_start();
 
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
+if (!isset($_SESSION['username'])) {
+    header('location:login.php');
+    exit;
+}
 
 // Verifica el rol del usuario
 
