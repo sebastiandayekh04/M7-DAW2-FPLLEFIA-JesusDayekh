@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'functions.php';
+$libros = $_SESSION['libros'];
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
     if (!isset($_SESSION['username'])) {
         header('location:login.php');
@@ -66,14 +67,16 @@ include 'functions.php';
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <?php 
                 foreach ($libros as $libro){
-                echo '<div class="col">
+                    echo '<div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="  $libro['foto']" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
-                    <div class="card-body">
-                        <h5 class="card-title"> $libro['titulo']</h5>
-                        <p class="card-text"><strong>Autor:</strong>  $libro['autor']</p>
-                        <p class="card-text"> $libro['descripcion']</p>
-                    </div>';
+                        <img src="' . $libro['foto'] . '" class="card-img-top" alt="Imagen del libro" style="height: 400px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">' . $libro['titulo'] . '</h5>
+                            <p class="card-text"><strong>Autor:</strong> ' . $libro['autor'] . '</p>
+                            <p class="card-text">' . $libro['descripcion'] . '</p>
+                        </div>
+                    </div>
+                  </div>';
                 }
                         ?>
                         <!-- Botones de editar y eliminar (solo visible para el admin) -->
