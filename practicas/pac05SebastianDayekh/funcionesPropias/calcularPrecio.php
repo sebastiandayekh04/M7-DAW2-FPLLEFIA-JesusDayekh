@@ -1,8 +1,10 @@
-<?php 
-function calcularTotal($precio, $cantidad, $impuesto){
-    return $precio * $cantidad - ($precio * $cantidad * $impuesto);
-   
-    echo calcularTotal(50, 3, 1.21 );
-
+<?php
+function calcularTotal($precio, $cantidad, $impuesto) {
+    $subtotal = $precio * $cantidad;
+    $total = $subtotal + ($subtotal * $impuesto / 100);
+    return $total;
 }
+
+// Ejemplo de uso
+echo "Precio total: " . calcularTotal(100, 2, 21) . "€";
 ?>
