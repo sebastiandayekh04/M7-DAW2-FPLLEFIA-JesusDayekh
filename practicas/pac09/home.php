@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'functions.php';
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
     if (!isset($_SESSION['username'])) {
         header('location:login.php');
@@ -41,7 +41,7 @@ session_start();
                    
                 </div>
             </div>
-            <a href="" class="btn btn-warning btn-sm">
+            <a href="login.php" class="btn btn-warning btn-sm">
                Cerrar sesión ❌
             </a>
         </div>
@@ -64,16 +64,18 @@ session_start();
 
         <!-- Mostrar lista de libros en un grid de tarjetas con tamaño uniforme -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            
-                <div class="col">
+                <?php 
+                foreach ($libros as $libro){
+                echo '<div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">TITULO</h5>
-                            <p class="card-text"><strong>Autor:</strong> AUTOR</p>
-                            <p class="card-text">DESCRIPCIÓN</p>
-                        </div>
-                      
+                        <img src="  $libro['foto']" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title"> $libro['titulo']</h5>
+                        <p class="card-text"><strong>Autor:</strong>  $libro['autor']</p>
+                        <p class="card-text"> $libro['descripcion']</p>
+                    </div>';
+                }
+                        ?>
                         <!-- Botones de editar y eliminar (solo visible para el admin) -->
                             <div class="card-footer d-flex justify-content-between">
                                 <a href="" class="btn btn-outline-primary btn-sm">
