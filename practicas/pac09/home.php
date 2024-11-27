@@ -2,13 +2,17 @@
 session_start();
 
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
-if (!isset($_SESSION['username'])) {
-    header('location:login.php');
-    exit;
-}
+    if (!isset($_SESSION['username'])) {
+        header('location:login.php');
+        exit;
+    }
 
 // Verifica el rol del usuario
-
+    if($_SESSION['role'] =="admin"){
+        $rol = '<p class="text-muted m-0"><i class="fas fa-user-shield text-success"></i> Admin ✏️</p>';
+    }else if($_SESSION['role'] =="lector"){
+        $rol = '<p class="text-muted m-0">Lector 📚</p>';
+    };
 // Obtener la lista de libros desde la sesión
 
 ?>
@@ -27,13 +31,13 @@ if (!isset($_SESSION['username'])) {
     <header class="bg-light py-3 mb-4 shadow-sm">
         <div class="container d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img src="aqui va la foto de perfil" alt="Foto de perfil" class="w-25 rounded-circle me-3">
+                <img src="<?php echo $_SESSION['img']  ?>" alt="<?php $_SESSION['username']  ?>" class="w-25 rounded-circle me-3">
                 <div>
-                    <h4 class="m-0">👋 Bienvenido, AQUÍ VA EL USUARIO!</h4>
+                    <h4 class="m-0">👋 Bienvenido, <?php  echo $_SESSION['username']  ?></h4>
                     <!-- SI ES ADMIN.... -->
-                        <p class="text-muted m-0"><i class="fas fa-user-shield text-success"></i> Admin ✏️</p>
+                    <?php  echo $rol  ?>
                    <!-- SINO.... -->
-                        <p class="text-muted m-0">Lector 📚</p>
+                   
                    
                 </div>
             </div>
