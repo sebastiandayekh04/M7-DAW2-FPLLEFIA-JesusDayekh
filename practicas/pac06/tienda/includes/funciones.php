@@ -1,5 +1,6 @@
 <?php 
 function muestraInfoContacto($nombre, $numero, $foto) {
+
     // Puedes retornar los datos en formato HTML para mostrar la información de contacto
     echo '
         <div>
@@ -10,6 +11,10 @@ function muestraInfoContacto($nombre, $numero, $foto) {
     ';
 }
 
+
+
+
+
 function generarTablaProductos($productos) {
     echo '
     <table class="table">
@@ -19,6 +24,7 @@ function generarTablaProductos($productos) {
                 <th scope="col">Nombre</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Disponibilidad</th>
+
 
             </tr>
         </thead>
@@ -44,3 +50,10 @@ function generarTablaProductos($productos) {
     </table>';
 }
 ?>
+
+function generarTablaProductos($productos){
+    
+};
+
+?>
+
