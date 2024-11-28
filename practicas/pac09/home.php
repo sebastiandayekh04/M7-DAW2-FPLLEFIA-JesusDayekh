@@ -1,13 +1,14 @@
 <?php
 session_start();
 include 'functions.php';
-$libros = $_SESSION['libros'];
+
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
     if (!isset($_SESSION['username'])) {
         header('location:login.php');
         exit;
     }
 
+$libros = isset($_SESSION['libros']) ? $_SESSION['libros'] : [];
 // Verifica el rol del usuario
     if($_SESSION['role'] =="admin"){
         $rol = '<p class="text-muted m-0"><i class="fas fa-user-shield text-success"></i> Admin ✏️</p>';
@@ -24,7 +25,17 @@ $libros = $_SESSION['libros'];
     <meta charset="UTF-8">
     <title>Biblioteca Virtual - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style type="text/css">
+        .limited-size {
+            max-width: 150px;
+            max-height: 150px;
+            width: auto; /* Permite mantener la proporción */
+            height: auto; /* Permite mantener la proporción */
+        }
+    </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
 
@@ -32,19 +43,22 @@ $libros = $_SESSION['libros'];
     <header class="bg-light py-3 mb-4 shadow-sm">
         <div class="container d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
-                <img src="<?php echo $_SESSION['img']  ?>" alt="<?php $_SESSION['username']  ?>" class="w-25 rounded-circle me-3">
+                <img src="<?php echo $_SESSION['img'];  ?>" alt="<?php $_SESSION['username'];  ?>" class="w-25 rounded-circle me-3 limited-size" >
                 <div>
-                    <h4 class="m-0">👋 Bienvenido, <?php  echo $_SESSION['username']  ?></h4>
+                    <h4 class="m-0">👋 Bienvenido, <?php  echo $_SESSION['username'];  ?></h4>
                     <!-- SI ES ADMIN.... -->
-                    <?php  echo $rol  ?>
+                    <?php  echo $rol;  ?>
                    <!-- SINO.... -->
                    
                    
                 </div>
             </div>
-            <a href="login.php" class="btn btn-warning btn-sm">
+
+            <a href="logout.php" class="btn btn-warning btn-sm">
                Cerrar sesión ❌
             </a>
+           
+
         </div>
     </header>
 
@@ -55,46 +69,48 @@ $libros = $_SESSION['libros'];
         </div>
 
         <!-- Botón de agregar libro (solo visible para el admin) -->
-      
-            <div class="text-center mb-4">
-                <a href="add_edit_book.php" class="btn btn-outline-success btn-lg">
-                    <i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Libro
-                </a>
-            </div>
-        
+        <?php      
+        if ($_SESSION['role']=="admin"){      
+        echo '
+        <div class="text-center mb-4">
+            <a href="add_edit_book.php" class="btn btn-outline-success btn-lg">
+                <i class="fas fa-plus-circle me-2"></i>Agregar Nuevo Libro
+            </a>
+        </div>';  
+            }
+        ?>
 
         <!-- Mostrar lista de libros en un grid de tarjetas con tamaño uniforme -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <?php 
-                foreach ($libros as $libro){
-                    echo '<div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="' . $libro['foto'] . '" class="card-img-top" alt="Imagen del libro" style="height: 400px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">' . $libro['titulo'] . '</h5>
-                            <p class="card-text"><strong>Autor:</strong> ' . $libro['autor'] . '</p>
-                            <p class="card-text">' . $libro['descripcion'] . '</p>
-                        </div>
-                    </div>
-                  </div>';
-                }
-                        ?>
-                        <!-- Botones de editar y eliminar (solo visible para el admin) -->
-                            <div class="card-footer d-flex justify-content-between">
-                                <a href="" class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-edit"></i> Editar
-                                </a>
-                                <a href="" class="btn btn-outline-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                </a>
-                            </div>
-                      
-                    </div>
+        <?php 
+        foreach ($libros as $key => $libro){
+            echo '<div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="' . $libro['foto'] . '" class="card-img-top" alt="Imagen del libro" style="height: 400px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">' . $libro['titulo'] . '</h5>
+                        <p class="card-text"><strong>Autor:</strong> ' . $libro['autor'] . '</p>
+                        <p class="card-text">' . $libro['descripcion'] . '</p>
+                    </div>';
+
+                    if ($_SESSION['role']=="admin"){
+                        echo '<!-- Botones de editar y eliminar (solo visible para el admin) -->
+                    <div class="card-footer d-flex justify-content-between">
+                        <a href="add_edit_book.php?id='.$key.'" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a href="delete_book.php?id='.$key.'" class="btn btn-outline-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </a>
+                    </div>';
+                    }
+                    echo '
                 </div>
-           
+            </div>';
+        }
+        ?>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>

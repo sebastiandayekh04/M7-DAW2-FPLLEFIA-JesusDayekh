@@ -1,7 +1,10 @@
 <?php 
-session_start();
+if(!isset($_SESSION)) {
+     session_start();
+}
 $libros = [
-    [
+    [   
+
         "foto" => "https://m.media-amazon.com/images/I/71hhPWoeNBS._AC_UF894,1000_QL80_.jpg",
         "titulo" => "Drácula",
         "autor" => "Bram Stoker",
@@ -38,6 +41,32 @@ $libros = [
         "descripcion" => "Un clásico del horror cósmico que narra la existencia de una antigua deidad y sus efectos en los humanos que descubren su culto."
     ]
 ];
+if (!isset($_SESSION['libros'])) {
+    $_SESSION['libros'] = $libros;
+}
+function buscarLibro($id) {
+    if (isset($_SESSION['libros'][$id])) {
+        return $_SESSION['libros'][$id];
+    }
+    return null;
+}
+function editarLibro($id, $titulo, $autor, $imagen, $descripcion) {
+    if (isset($_SESSION['libros'][$id])) {
+        $_SESSION['libros'][$id] = ["titulo" => $titulo, "autor" => $autor, "foto" => $imagen, "descripcion" => $descripcion];
+    }
+}
 
+
+function agregarLibro($titulo, $autor, $imagen, $descripcion){
+    $_SESSION['libros'][] = ["titulo" => $titulo, "autor" => $autor, "foto" => $imagen, "descripcion" => $descripcion];
+}
+
+function eliminarLibro($id) {
+    if (isset($_SESSION['libros'][$id])) {
+        unset($_SESSION['libros'][$id]);
+        return true;
+    }
+    return false;
+}
 
 ?>
