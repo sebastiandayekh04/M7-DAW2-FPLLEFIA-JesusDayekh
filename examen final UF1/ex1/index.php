@@ -4,6 +4,8 @@ session_start();
 if (isset($_POST['nombre']) && isset($_POST['apellido']) ) {
     $_SESSION['nombre'] = $_POST['nombre'];
     $_SESSION['apellido'] = $_POST['apellido'];
+    header('Location: /componentes/inicio.php');
+    exit;
 }
 ?>
 
@@ -17,6 +19,7 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) ) {
 </head>
 <body>
 <?php require_once'componentes/header.php'; ?>
+
    <div class="container">
    <h1 class="text-center mb-4"> introduce tus datos</h1>
     <div class="d-flex justify-content-center align-items-center vh-100">
