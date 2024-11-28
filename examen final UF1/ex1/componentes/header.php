@@ -6,6 +6,7 @@ if(!isset($_SESSION)) {
 ?>
 <header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="nav-item">Bienvenido <?php $_SESSION['nombre'] ?> <?php $_SESSION['apeliido'] ?></div>
   <div class="collapse navbar-collapse" >
     <ul class="navbar-nav">
       <li class="nav-item">

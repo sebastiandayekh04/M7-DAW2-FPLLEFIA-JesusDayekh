@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-$_SESSION['username'] = $_POST['nombre'];
-$_SESSION['password'] = $_POST['apellido'];
+$_SESSION['nombre'] = $_POST['nombre'];
+$_SESSION['apellido'] = $_POST['apellido'];
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@ $_SESSION['password'] = $_POST['apellido'];
 <body>
    <?php require_once'componentes/header.php'; ?>
    <div class="container">
-   <h1 class="text-center mb-4">Bienvenido <?php $_SESSION['username'] ?>, introduce tus datos</h1>
+   <h1 class="text-center mb-4"> introduce tus datos</h1>
     <div class="d-flex justify-content-center align-items-center vh-100">
     <form method="post">
         <div class="mb-3"> 
