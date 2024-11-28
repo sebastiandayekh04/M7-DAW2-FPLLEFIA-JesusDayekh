@@ -29,9 +29,7 @@ include 'funciones.php'
       <td>' . $producto['precio'] . '</td>
       <td>' . $producto['descripcion'] . '</td>
       <div class="card-footer d-flex justify-content-between">
-    <a href="formulario.php?id='.$key.'" class="btn btn-outline-primary btn-sm">
-        <i class="fas fa-edit"></i> Agregar
-    </a>
+ 
     <a href="eliminar.php?id='.$key.'" class="btn btn-outline-danger btn-sm">
          <i class="fas fa-trash-alt"></i> Eliminar
      </a>
@@ -42,6 +40,9 @@ include 'funciones.php'
     }
     ?>
 </table>
+<a href="formulario.php" class="btn btn-outline-primary btn-sm">
+        <i class="fas fa-edit"></i> Agregar
+</a>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

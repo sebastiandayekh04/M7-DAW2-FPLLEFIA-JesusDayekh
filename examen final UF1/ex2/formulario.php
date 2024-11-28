@@ -2,9 +2,25 @@
 if(!isset($_SESSION)) {
     session_start();
 }
-
+include 'funciones.php';
+$id = null;
 if (isset($_POST['crear'])) {
     agregarProducto($nombre, $precio, $descripcion);
+    header('location:index.php');
+    exit;
+}
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+
+$crear_nuevo = true;
+if ($id !== null){
+    $productos = buscarProducto($id);
+    $crear_nuevo = false;
+    if ($productos == null) {
+        header('location:index.php');
+        exit;
+    }
 }
 ?>
 
@@ -30,6 +46,13 @@ if (isset($_POST['crear'])) {
                 <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" style="height: 150px;"><?php echo $productos['descripcion']; ?></textarea>
                 <label for="descripcion">Descripción</label>
             </div>
+            <?php 
+            if ($crear_nuevo == true) {
+                echo '<input type="hidden" name="crear" value="1">';
+            } else {
+                echo '<input type="hidden" name="actualizar" value="1">';
+            }
+            ?>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary btn-lg"> Crear</button>
             </div>
