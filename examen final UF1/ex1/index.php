@@ -1,8 +1,10 @@
 <?php 
 session_start();
 
-$_SESSION['nombre'] = $_POST['nombre'];
-$_SESSION['apellido'] = $_POST['apellido'];
+if (isset($_POST['nombre']) && isset($_POST['apellido']) ) {
+    $_SESSION['nombre'] = $_POST['nombre'];
+    $_SESSION['apellido'] = $_POST['apellido'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +16,7 @@ $_SESSION['apellido'] = $_POST['apellido'];
     <title>Ejercicio 1</title>
 </head>
 <body>
-   <?php require_once'componentes/header.php'; ?>
+<?php require_once'componentes/header.php'; ?>
    <div class="container">
    <h1 class="text-center mb-4"> introduce tus datos</h1>
     <div class="d-flex justify-content-center align-items-center vh-100">

@@ -1,7 +1,7 @@
 <?php 
 if(!isset($_SESSION)) {
     session_start();
-    require_once'componentes/header.php';
+
 };
 ?>
 
@@ -13,6 +13,7 @@ if(!isset($_SESSION)) {
     <title>Document</title>
 </head>
 <body>
-    
+<?php require_once'componentes/header.php'; ?>
+<h1>Hola  <?php $_SESSION['nombre'] ?> <?php $_SESSION['apeliido'] ?> soy la pagina de Productos </h1>
 </body>
 </html>

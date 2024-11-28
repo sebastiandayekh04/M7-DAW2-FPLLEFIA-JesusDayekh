@@ -12,6 +12,7 @@ if(!isset($_SESSION)) {
     <title>Document</title>
 </head>
 <body>
-    
+<?php require_once'componentes/header.php'; ?>
+<h1>Hola  <?php $_SESSION['nombre'] ?> <?php $_SESSION['apeliido'] ?> soy la pagina de Inicio </h1>
 </body>
 </html>

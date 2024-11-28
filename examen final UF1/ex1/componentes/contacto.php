@@ -9,9 +9,10 @@ if(!isset($_SESSION)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contacto</title>
 </head>
 <body>
-    
+<?php require_once'componentes/header.php'; ?>
+<h1>Hola  <?php $_SESSION['nombre'] ?> <?php $_SESSION['apeliido'] ?> soy la pagina de contacto </h1>
 </body>
 </html>
