@@ -1,9 +1,8 @@
 <?php 
 session_start();
 
-if (isset($_POST['nombre']) && isset($_POST['apellido']) ) {
+if (isset($_POST['nombre']) ) {
     $_SESSION['nombre'] = $_POST['nombre'];
-    $_SESSION['apellido'] = $_POST['apellido'];
     header('Location: /componentes/inicio.php');
     exit;
 }
@@ -27,11 +26,6 @@ if (isset($_POST['nombre']) && isset($_POST['apellido']) ) {
         <div class="mb-3"> 
         <label> Nombre: </label>
         <input type="text" name="nombre" id="nombre">
-        </div>
-        <br>
-        <div class="mb-3">
-        <label> Apellido: </label>
-        <input type="text" name="apellido" id="apellido">
         </div>
         <button type="submit" value="post" class="btn btn-primary" >Enviar info</button>
     </form>

@@ -1,6 +1,10 @@
 <?php 
 session_start();
-include 'funciones.php'
+include 'funciones.php';
+ if (!isset($_SESSION['Productos'])) {
+  $_SESSION['productos'] = $productos;
+ }
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +25,7 @@ include 'funciones.php'
     </tr>
   </thead>
   <?php
-    foreach ($productos as $key => $producto){
+    foreach ($_SESSION['productos'] as $key => $producto){
         echo' 
   <tbody>
     <tr>

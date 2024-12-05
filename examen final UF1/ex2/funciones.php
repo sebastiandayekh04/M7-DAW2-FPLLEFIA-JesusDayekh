@@ -29,25 +29,16 @@ $productos = [
         "descripcion" => "Altavoz portátil resistente al agua con sonido estéreo."
     ]
 ];
-if (!isset($_SESSION['productos'])) {
-    $_SESSION['productos'] = $productos;
-}
-function buscarProducto($id) {
-    if (isset($_SESSION['productos'][$id])) {
-        return $_SESSION['productos'][$id];
-    }
-    return null;
-}
+
 
 function eliminarProducto($id) {
-    if (isset($_SESSION['productos'][$id])) {
-        unset($_SESSION['productos'][$id]);
-        
-    }
-    
+        array_slice($_SESSION['productos'], $id, 1);
 }
 
 function agregarProducto($nombre, $precio, $descripcion){
-    $_SESSION['productos'][] = ["nombre" => $nombre, "precio" => $precio,  "descripcion" => $descripcion];
+    array_push(
+    $_SESSION['productos'],
+     ["nombre" => $nombre, "precio" => $precio,  "descripcion" => $descripcion]
+    );
 }
 ?>

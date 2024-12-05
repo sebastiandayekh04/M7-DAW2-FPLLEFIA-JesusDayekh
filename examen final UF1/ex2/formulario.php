@@ -15,7 +15,6 @@ if (isset($_GET['id'])) {
 
 $crear_nuevo = true;
 if ($id !== null){
-    $productos = buscarProducto($id);
     $crear_nuevo = false;
     if ($productos == null) {
         header('location:index.php');

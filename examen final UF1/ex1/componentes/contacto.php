@@ -1,7 +1,7 @@
 <?php 
 if(!isset($_SESSION)) {
     session_start();
-
+    require_once'componentes/header.php';
 }
 ?>
 <!DOCTYPE html>
@@ -12,7 +12,6 @@ if(!isset($_SESSION)) {
     <title>Contacto</title>
 </head>
 <body>
-<?php require_once'componentes/header.php'; ?>
-<h1>Hola  <?php $_SESSION['nombre'] ?> <?php $_SESSION['apeliido'] ?> soy la pagina de contacto </h1>
+<h1> Hola <?php $_SESSION['nombre'] ?> Soy la pagina de Contacto </h1>
 </body>
 </html>
