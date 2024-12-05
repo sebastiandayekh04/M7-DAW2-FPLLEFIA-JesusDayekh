@@ -1,19 +1,15 @@
 <?php 
  session_start();
 
- if (!isset($_SESSION['username'])) {
-    header('location:login.php');
-    exit;
-
-    if ($_SESSION['role'] = "admin") {
-        header('location:manage.php');
-        exit;
-    } else {
-        header('location:trivial.php');
-        exit;
-    };
+ if (isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'admin') {
+        header("Location: manage.php");
+        exit();
+    } elseif ($_SESSION['role'] == 'player') {
+        header("Location: trivial.php");
+        exit();
+    }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
