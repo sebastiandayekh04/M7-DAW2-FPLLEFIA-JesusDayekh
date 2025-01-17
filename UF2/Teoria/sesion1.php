@@ -1,6 +1,6 @@
 <?php 
 
-class Saiyayin
+class Persona
 {
 //primero modificaciones de acceso (siempre publico de momento) protected
 //no dejan de ser variables $
@@ -30,7 +30,7 @@ echo $goku->Saludar();
 echo '<br>';
 echo "Mi nivel de pelea es " . $goku->NivelDePelea();
 
-$objeto1 = new Saiyayin();
+$objeto1 = new Persona();
 var_dump($objeto1);
 
 
