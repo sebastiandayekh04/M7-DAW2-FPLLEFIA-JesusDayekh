@@ -8,8 +8,8 @@ class Llibre
 
     public function __construct(string $titol, string $autor)
     {
-        $this-> titol = $titol;
-        $this-> autor = $autor;
+        $this->titol = $titol;
+        $this->autor = $autor;
     }
 
     public function descripcio(): String
