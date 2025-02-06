@@ -11,11 +11,11 @@
     <form method="post">
         <div>
             <label for="nombre">Nombre: </label>
-            <input type="text" name="nombre" id="nombre" required>
+            <input type="string" name="nombre" id="nombre" required>
         </div>
         <div>
             <label for="tipo">tipo: </label>
-            <input type="text" name="tipo" id="tipo" required>
+            <input type="string" name="tipo" id="tipo" required>
         </div>
         <button type="submit">Enviar</button>
     </form>
