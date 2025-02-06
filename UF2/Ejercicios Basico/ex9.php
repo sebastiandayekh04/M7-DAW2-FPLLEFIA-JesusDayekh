@@ -28,16 +28,12 @@ class Producte
     }
 }
 
-$Producte = [
-    new Producto("Bolso Birkin", "Hermès", 25000),
-    new Producto("Zapatillas Air Dior", "Dior x Jordan", 10000),
-    new Producto("Reloj Royal Oak", "Audemars Piguet", 50000),
+
+$Productos = [
+    new Producte("Bolso Birkin", "Hermès", 25000),
+    new Producte("Zapatillas Air Dior", "Dior x Jordan", 10000),
+    new Producte("Reloj Royal Oak", "Audemars Piguet", 50000),
 ];
-foreach ($Producte as $Producto) {
-    echo $Producto->DevolverPrecio() . "<br>";
-    echo $Producto->MarcaProducto() . "<br>";
-    echo $Producto->NombreProducto() . "<br>";
-}
 ?>
 
 <!DOCTYPE html>
@@ -50,24 +46,25 @@ foreach ($Producte as $Producto) {
 </head>
 
 <body>
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Marca</th>
-            <th>Precio (€)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-        foreach ($Producte as $Producto) {
-            echo "<tr>";
-            echo "<td>" . $Producto->$producto . "</td>";
-            echo "<td>" . $Producto->$marca . "</td>";
-            echo "<td>" . $Producto->$precio . "</td>";
-            echo "</tr>";
-        }
-      ?>
-    </tbody>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Marca</th>
+                <th>Precio (€)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($Productos as $Producto) {
+                echo "<tr>";
+                echo "<td>" . $Producto->NombreProducto() . "</td>";
+                echo "<td>" . $Producto->MarcaProducto() . "</td>";
+                echo "<td>" . $Producto->DevolverPrecio() . "</td>";
+                echo "</tr>";
+            }
+        ?>
+        </tbody>
     </table>
 </body>
 

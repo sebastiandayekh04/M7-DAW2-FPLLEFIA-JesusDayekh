@@ -10,12 +10,12 @@
 <body>
     <form method="post">
         <div>
-            <label for="num1">Numero 1:</label>
-            <input type="number" name="num1" id="num1" required>
+            <label for="nombre">Nombre: </label>
+            <input type="string" name="nombre" id="nombre" required>
         </div>
         <div>
-            <label for="num2">Numero 2:</label>
-            <input type="number" name="num2" id="num2" required>
+            <label for="especie">Especie: </label>
+            <input type="string" name="especie" id="especie" required>
         </div>
         <button type="submit">Enviar</button>
     </form>
@@ -30,9 +30,27 @@ class Animal{
     public string $especie;
     
 
-    public function __construct()
+    public function __construct(string $nombre, string $especie)
     {
-        
+        $this->nombre=$nombre;
+        $this->especie=$especie;
+    }
+
+    public function descriure(): string
+    {
+        return "El nuevo animal que viene al zoologico de barcelona es un " . $this->nombre . " de la especie " . $this->especie;
     }
 }
+
+
+if (isset($_POST['nombre']) && isset($_POST['especie'])) {
+
+    $nombre = $_POST['nombre'];
+    $especie = $_POST['especie'];
+
+    $Animal = new Animal( $nombre, $especie);
+    echo $Animal->descriure();
+}
+
+
 ?>
