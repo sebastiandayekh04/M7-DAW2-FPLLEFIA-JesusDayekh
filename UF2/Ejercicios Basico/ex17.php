@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ex13</title>
+    <title>ex17</title>
 </head>
 <body>
 <form method="post">
@@ -33,7 +33,7 @@ class Persona
         $this->edad = $edad;
     }
 
-    public function benvinguda(): string
+    public function persona(): string
     {
         return "El nuevo interno se llama: " . $this->nombre . " y tiene " . $this->edad;
     }
@@ -45,8 +45,8 @@ if (isset($_POST['nombre']) && isset($_POST['edad'])) {
     $nombre = $_POST['nombre'];
     $edad = $_POST['edad'];
 
-    $militar = new Persona( $nombre, $edad);
-    echo $militar->benvinguda();
+    $persona = new Persona( $nombre, $edad);
+    echo $persona->persona();
 }
 
 

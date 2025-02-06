@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ex13</title>
+    <title>ex14</title>
 </head>
 <body>
 <form method="post">
         <div>
             <label for="nombre">Nombre: </label>
-            <input type="string" name="nombre" id="nombre" required>
+            <input type="text" name="nombre" id="nombre" required>
         </div>
         <div>
             <label for="edad"> Edad: </label>

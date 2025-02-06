@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ex10</title>
+    <title>ex18</title>
 </head>
 
 <body>
@@ -25,20 +25,20 @@
 
 <?php 
 
-class Animal{
+class Animal 
+{
     public string $nombre;
     public string $tipo;
-    
 
-    public function __construct(string $nombre, string $tipo)
+    public function __construct( string $nombre, string $tipo)
     {
-        $this->nombre=$nombre;
-        $this->tipo=$tipo;
+        $this->nombre = $nombre;
+        $this->tipo = $tipo;
     }
 
-    public function descriure(): string
+    public function raza()
     {
-        return "El nuevo animal que viene al zoologico de barcelona es un " . $this->nombre . " de la especie " . $this->tipo;
+        return "el animal se llama " . $this->nombre . " y es del tipo " . $this->tipo;
     }
 }
 
@@ -48,9 +48,8 @@ if (isset($_POST['nombre']) && isset($_POST['tipo'])) {
     $nombre = $_POST['nombre'];
     $especie = $_POST['tipo'];
 
-    $Animal = new Animal( $nombre, $tipo);
-    echo $Animal->descriure();
+    $salvaje = new Animal( $nombre, $tipo);
+    echo $salvaje->raza();
 }
-
 
 ?>
