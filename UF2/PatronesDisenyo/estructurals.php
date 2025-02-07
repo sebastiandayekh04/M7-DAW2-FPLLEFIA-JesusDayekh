@@ -22,7 +22,6 @@ if (isset($_POST['tipoPatron']) && !empty($_POST['tipoPatron'])) {
 </head>
 <?php
 include_once('../PatronesDisenyo/header.php');
-
 ?>
 
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
