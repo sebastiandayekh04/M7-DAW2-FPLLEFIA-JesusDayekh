@@ -10,7 +10,7 @@
 </head>
 <?php
 include("./header.php");
-include("./nav.php");
+
 ?>
 
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
@@ -25,12 +25,10 @@ include("./nav.php");
                     <option value="Memento">Memento</option>
                     <option value="Observer">Observer</option>
                 </select>
-                <?php
-                if (isset($_POST["tipoPatron"])) {
-                    echo $_POST["tipoPatron"];
-                }
+            </div>
 
-                ?>
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-info " type="submit">Enviar</button>
             </div>
         </form>
 
