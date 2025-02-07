@@ -32,7 +32,7 @@ include_once('../PatronesDisenyo/header.php');
         </form>
 
         <div class="card border border-dark" style="width: 19rem;">
-            <img class="card-img-top border border-dark" src="https://media.licdn.com/dms/image/v2/D4E12AQHUtQbQzGtRdA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1695216630652?e=2147483647&v=beta&t=KozwhPnBLo2ysAmtrLylpFSgkYeP-sFwZqA4JuXm5AM" alt="Card image cap">
+            <img class="card-img-top border border-dark" src="https://www.ionos.mx/digitalguide/fileadmin/DigitalGuide/Schaubilder/el-patron-singleton-en-la-practica.png" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text text-black">Los patrones creacionales proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización de código existente. Los patrones estructurales explican cómo ensamblar objetos y clases en estructuras más grandes a la vez que se mantiene la flexibilidad y eficiencia de la estructura.</p>
             </div>
