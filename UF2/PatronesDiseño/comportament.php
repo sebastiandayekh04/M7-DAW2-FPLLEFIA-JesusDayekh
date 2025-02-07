@@ -18,12 +18,12 @@ include("./nav.php");
         <h2 class="card-title text-center"></h2>
         <form method="post">
             <div class="mb-3">
-                <label for="tipoPatron" class="form-label">Tipo de Patron:</label>
+                <label for="tipoPatron" class="form-label">Tipo de Patron de Comportamiento:</label>
                 <select name="tipoPatron" id="tipoPatron" class="form-select" onchange="this.form.submit()" required>
                     <option> </option>
-                    <option value="Creacionales">Patrones Creacionales</option>
-                    <option value="Estructutrales">Patrones Estructutrales</option>
-                    <option value="Comportamiento">Patrones de Comportamiento</option>
+                    <option value="ChainOfReflection">Chain Of Reflection</option>
+                    <option value="Memento">Memento</option>
+                    <option value="Observer">Observer</option>
                 </select>
                 <?php
                 if (isset($_POST["tipoPatron"])) {
@@ -33,6 +33,14 @@ include("./nav.php");
                 ?>
             </div>
         </form>
+
+        <div class="card border border-dark" style="width: 19rem;">
+            <img class="card-img-top border border-dark" src="https://yosoydani.com/wp-content/uploads/2017/11/unnamed-file-1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text text-black">Los patrones de comportamiento tratan con algoritmos y la asignación de responsabilidades entre objetos. Permite pasar solicitudes a lo largo de una cadena de manejadores. Al recibir una solicitud, cada manejador decide si la procesa o si la pasa al siguiente manejador de la cadena.</p>
+            </div>
+        </div>
+
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

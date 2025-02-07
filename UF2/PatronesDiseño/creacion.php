@@ -18,12 +18,12 @@ include("./nav.php");
         <h2 class="card-title text-center"></h2>
         <form method="post">
             <div class="mb-3">
-                <label for="tipoPatron" class="form-label">Tipo de Patron:</label>
+                <label for="tipoPatron" class="form-label">Tipo de Patron Creacional:</label>
                 <select name="tipoPatron" id="tipoPatron" class="form-select" onchange="this.form.submit()" required>
                     <option> </option>
-                    <option value="Creacionales">Patrones Creacionales</option>
-                    <option value="Estructutrales">Patrones Estructutrales</option>
-                    <option value="Comportamiento">Patrones de Comportamiento</option>
+                    <option value="FacthoryMethod">Facthory Method</option>
+                    <option value="Prototype">Prototype</option>
+                    <option value="Singleton">Singleton</option>
                 </select>
                 <?php
                 if (isset($_POST["tipoPatron"])) {
@@ -33,6 +33,15 @@ include("./nav.php");
                 ?>
             </div>
         </form>
+
+        <div class="card border border-dark" style="width: 19rem;">
+            <img class="card-img-top border border-dark" src="https://media.licdn.com/dms/image/v2/D4E12AQHUtQbQzGtRdA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1695216630652?e=2147483647&v=beta&t=KozwhPnBLo2ysAmtrLylpFSgkYeP-sFwZqA4JuXm5AM" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text text-black">Los patrones creacionales proporcionan mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización de código existente. Los patrones estructurales explican cómo ensamblar objetos y clases en estructuras más grandes a la vez que se mantiene la flexibilidad y eficiencia de la estructura.</p>
+            </div>
+        </div>
+
+
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

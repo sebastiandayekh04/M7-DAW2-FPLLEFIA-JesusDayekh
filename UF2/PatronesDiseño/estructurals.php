@@ -18,12 +18,12 @@ include("./nav.php");
         <h2 class="card-title text-center"></h2>
         <form method="post">
             <div class="mb-3">
-                <label for="tipoPatron" class="form-label">Tipo de Patron:</label>
+                <label for="tipoPatron" class="form-label">Tipo de Patron Estructural:</label>
                 <select name="tipoPatron" id="tipoPatron" class="form-select" onchange="this.form.submit()" required>
                     <option> </option>
-                    <option value="Creacionales">Patrones Creacionales</option>
-                    <option value="Estructutrales">Patrones Estructutrales</option>
-                    <option value="Comportamiento">Patrones de Comportamiento</option>
+                    <option value="Bridge">Bridge</option>
+                    <option value="Composite">Composite</option>
+                    <option value="Proxy">Proxy</option>
                 </select>
                 <?php
                 if (isset($_POST["tipoPatron"])) {
@@ -33,7 +33,17 @@ include("./nav.php");
                 ?>
             </div>
         </form>
+
+        <div class="card border border-dark" style="width: 19rem;">
+            <img class="card-img-top border border-dark" src="https://media.licdn.com/dms/image/v2/D4E12AQGphZLR7oI-PA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1699559944801?e=2147483647&v=beta&t=z-Fy3GGS1jLJnS5sQgIK1kTczUFMfMVeBK5pG3okkgE" alt="Card image cap">
+            <div class="card-body">
+                <p class="card-text text-black">Los patrones de diseño estructural son patrones de diseño que facilitan el diseño al identificar una forma sencilla de realizar relaciones entre entidades. Los ejemplos de patrones estructurales incluyen: Patrón de adaptador: 'adapta' una interfaz para una clase en una que espera un cliente.</p>
+            </div>
+        </div>
+
     </div>
+
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
