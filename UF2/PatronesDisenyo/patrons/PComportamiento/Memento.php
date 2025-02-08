@@ -8,8 +8,10 @@
     l
     <title>Patrones Bridge</title>
 </head>
-<?php
-include __DIR__ . '/../../header.php'; //tocaba poner esto pq pobrando y probando fue lo unico que sirvio
+<?php 
+include_once '../../header.php';
+
+echo getHeader(2);
 ?>
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
     <div class="card p-4 bg-dark text-white" style="width: 35rem; height: auto; box-sizing: border-box;">

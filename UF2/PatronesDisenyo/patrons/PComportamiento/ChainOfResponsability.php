@@ -8,10 +8,12 @@
     l
     <title>Patrones Bridge</title>
 </head>
-<?php
-include __DIR__ . '/../../header.php'; //tocaba poner esto pq pobrando y probando fue lo unico que sirvio
+<?php 
+include_once '../../header.php';
+
+echo getHeader(2);
 ?>
-<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://refactoring.guru/images/patterns/content/chain-of-responsibility/chain-of-responsibility.png?id=56c10d0dc712546cc283cfb3fb463458'); background-size:cover; background-repeat: no-repeat;">
+<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
     <div class="card p-4 bg-dark text-white" style="width: 35rem; height: auto; box-sizing: border-box;">
     <h2 class="card-title text-center"></h2>
     <div class="card border border-dark" style="width: 32rem; box-sizing: border-box;">

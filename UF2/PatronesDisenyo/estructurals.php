@@ -23,16 +23,19 @@ if (isset($_POST['tipoPatron']) && !empty($_POST['tipoPatron'])) {
 </head>
 
 <?php
-include_once('../PatronesDisenyo/header.php');
+include_once '../PatronesDisenyo/header.php';
+
+echo getHeader(1);
+
 ?>
-<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
+<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat; ">
    
-    <div class="card p-4 bg-dark text-white" style="width: 22rem;">
+    <div class="card p-3 bg-dark text-white" style="width: 20rem">
         <h2 class="card-title text-center"></h2>
         <form method="post">
             <div class="mb-3">
                 <label for="tipoPatron" class="form-label">Tipo de Patron Estructural:</label>
-                <select name="tipoPatron" id="tipoPatron" class="form-select" required>
+                <select name="tipoPatron" id="tipoPatron" class="form-select" style="z-index: 1000 !important;" required>
                     <option> </option>
                     <option value="Bridge">Bridge</option>
                     <option value="Composite">Composite</option>

@@ -5,29 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    l
     <title>Patrones Bridge</title>
-</head>
-<?php
-include __DIR__ . '/../../header.php'; //tocaba poner esto pq pobrando y probando fue lo unico que sirvio
-?>
-<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
-    <div class="card p-4 bg-dark text-white" style="width: 35rem; height: auto; box-sizing: border-box;">
-    <h2 class="card-title text-center"></h2>
-    <div class="card border border-dark" style="width: 32rem; box-sizing: border-box;">
-        <img class="card-img-top border border-dark" src="" alt="Card image cap" style="height: 350px; object-fit: cover;">
+    <style>
         
-        <!-- Contenedor desplazable -->
-        <div class="card-body" style="max-height: 300px; overflow-y: auto;">
-            <p class="card-text text-black">
-                El patrón Chain of Responsibility permite desacoplar el emisor y el receptor de una solicitud al pasarla secuencialmente a través de una cadena de manejadores. Cada manejador procesa la solicitud o la delega al siguiente. Esto es útil en sistemas que requieren múltiples validaciones o procesamiento en etapas, como autenticación, autorización y validación de datos en una aplicación web. Al aplicar este patrón, evitamos código monolítico y facilitamos la extensibilidad sin modificar clases existentes. 
-            </p>
-            <p class="card-text text-black">
-                Un ejemplo en PHP podría ser una cadena de validaciones para manejar solicitudes de acceso en una aplicación. Aquí tienes un ejemplo en PHP:
-            </p>
+    </style>
+</head>
+
+<?php 
+include_once '../../header.php';
+
+echo getHeader(2);
+?>
+
+<body class="d-flex justify-content-center align-items-center vh-100" 
+      style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size: cover; background-repeat: no-repeat;">
+
+    <div class="card p-3 bg-dark text-white" style="width: 28rem; z-index: -1;">
+        <h4 class="card-title text-center">Patrón Chain of Responsibility</h4>
+        <div class="card border border-dark">
+            <img class="card-img-top border" src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Flag_of_Mexico.svg" 
+                 alt="Bandera de México" style="height: 200px; object-fit: cover;">
             
-            <!-- Código de ejemplo con desplazamiento propio -->
-            <pre class="p-2 border rounded bg-light text-dark" style="max-height: 150px; overflow-y: auto; font-size: 0.9rem;">
+            <div class="card-body p-2" style="max-height: 250px; overflow-y: auto;">
+                <p class="card-text text-black small">
+                    El patrón Chain of Responsibility permite desacoplar el emisor y receptor de una solicitud al pasarla 
+                    secuencialmente a través de una cadena de manejadores. Esto facilita la extensibilidad sin modificar 
+                    clases existentes.
+                </p>
+                <p class="card-text text-black small">
+                    Ejemplo en PHP:
+                </p>
+                <pre class="p-2 border rounded bg-light text-dark small" 
+                     style="max-height: 120px; overflow-y: auto; font-size: 0.8rem;">
 &lt;?php
 class Handler {
     private $next;
@@ -36,19 +45,16 @@ class Handler {
         return $handler;
     }
     public function handle($request) {
-        if ($this->next) {
-            return $this->next->handle($request);
-        }
-        return null;
+        return $this->next ? $this->next->handle($request) : null;
     }
 }
 ?&gt;
-            </pre>
+                </pre>
+            </div>
         </div>
     </div>
-</div>
-
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

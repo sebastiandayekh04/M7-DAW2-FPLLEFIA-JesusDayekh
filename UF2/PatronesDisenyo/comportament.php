@@ -1,3 +1,16 @@
+<?php
+
+if (isset($_POST['tipoPatron']) && !empty($_POST['tipoPatron'])) {
+
+    $tipoPatron = $_POST['tipoPatron'];
+
+    header("Location:./patrons/PComportamiento/{$tipoPatron}.php");
+    exit;
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,18 +22,21 @@
     <title>Patrones de Comportamiento</title>
 </head>
 <?php
-include_once('../PatronesDisenyo/header.php');
+include_once '../PatronesDisenyo/header.php';
+
+echo getHeader(1);
+
 ?>
 
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
-    <div class="card p-4 bg-dark text-white" style="width: 22rem;">
+    <div class="card p-3 bg-dark text-white" style="width: 20rem;">
         <h2 class="card-title text-center"></h2>
         <form method="post">
             <div class="mb-3">
                 <label for="tipoPatron" class="form-label">Tipo de Patron de Comportamiento:</label>
-                <select name="tipoPatron" id="tipoPatron" class="form-select" onchange="this.form.submit()" required>
+                <select name="tipoPatron" id="tipoPatron" class="form-select" style="z-index: 1000 !important;" required>
                     <option> </option>
-                    <option value="ChainOfReflection">Chain Of Reflection</option>
+                    <option value="ChainOfResponsability">Chain Of Reflection</option>
                     <option value="Memento">Memento</option>
                     <option value="Observer">Observer</option>
                 </select>

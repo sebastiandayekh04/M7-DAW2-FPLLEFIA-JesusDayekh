@@ -9,7 +9,9 @@
     <title>Patrones de diseño</title>
 </head>
 <?php
-include_once("./header.php");
+include_once '../PatronesDisenyo/header.php';
+
+echo getHeader(0);
 
 ?>
 
