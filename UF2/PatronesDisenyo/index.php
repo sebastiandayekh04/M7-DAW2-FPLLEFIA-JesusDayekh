@@ -25,7 +25,7 @@ echo getHeader(0);
 
                 <div class="card text-dark" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Patrones creacionales</h5>
+                        <h5 class="card-title">Patrones Creacionales</h5>
                         <p class="card-text">Los patrones creacionales proporcionan varios mecanismos de creación de objetos que incrementan la flexibilidad y la reutilización del código existente.</p>
                         <a href="./creacion.php" class="btn btn-outline-primary">Ver más</a>
                     </div>
@@ -33,7 +33,7 @@ echo getHeader(0);
 
                 <div class="card text-dark" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Patrones estructurales</h5>
+                        <h5 class="card-title">Patrones Estructurales</h5>
                         <p class="card-text">Los patrones estructurales explican cómo ensamblar objetos y clases en estructuras más grandes, a la vez que se mantiene la flexibilidad y eficiencia de estas estructuras.</p>
                         <a href="./estructurals.php" class="btn btn-outline-warning">Ver más</a>
                     </div>
@@ -41,7 +41,7 @@ echo getHeader(0);
 
                 <div class="card text-dark" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">Patrones de comportamiento</h5>
+                        <h5 class="card-title">Patrones de Comportamiento</h5>
                         <p class="card-text">Los patrones de comportamiento tratan con algoritmos y la asignación de responsabilidades entre objetos.</p>
                         <a href="./comportament.php" class="btn btn-outline-info">Ver más</a>
                     </div>

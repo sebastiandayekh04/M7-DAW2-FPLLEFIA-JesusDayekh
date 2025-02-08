@@ -28,7 +28,7 @@ echo getHeader(1);
 
 ?>
 
-<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
+<body class="principalBody" >
     <div class="card p-3 bg-dark text-white" style="width: 20rem;">
         <h2 class="card-title text-center"></h2>
         <form method="post">

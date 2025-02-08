@@ -17,7 +17,7 @@ if (isset($_POST['tipoPatron']) && !empty($_POST['tipoPatron'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    l
+    <link href="./css/styles.css" rel="stylesheet">
     <title>Patrones Estructurales</title>
 
 </head>
@@ -28,9 +28,9 @@ include_once '../PatronesDisenyo/header.php';
 echo getHeader(1);
 
 ?>
-<body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat; ">
+<body class="principalBody">
    
-    <div class="card p-3 bg-dark text-white" style="width: 20rem">
+    <div class="card p-3 bg-dark text-white" style="width: 20rem; margin-left:40%">
         <h2 class="card-title text-center"></h2>
         <form method="post">
             <div class="mb-3">
@@ -41,13 +41,7 @@ echo getHeader(1);
                     <option value="Composite">Composite</option>
                     <option value="Proxy">Proxy</option>
                 </select>
-                <?php
-                /* 
-                if (isset($_POST["tipoPatron"])) {
-                    echo $_POST["tipoPatron"];
-                }
-                */
-                ?>
+
             </div>
 
             <div class="d-flex justify-content-center">
