@@ -29,6 +29,7 @@ echo getHeader(1);
 
 <body class="principalBody">
     <div class="card p-3 bg-dark text-white" style="width: 20rem;">
+    <h2 class="card-title text-center">Patrones de Creacion</h2>
         <form method="post">
             <div class="mb-3">
                 <label for="tipoPatron" class="form-label">Selecciona un patrón:</label>
