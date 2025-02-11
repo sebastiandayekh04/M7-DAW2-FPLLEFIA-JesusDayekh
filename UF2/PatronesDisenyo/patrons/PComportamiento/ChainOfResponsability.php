@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     l
-    <title>Patrones Bridge</title>
+    <title>Chain Of Responsability</title>
 </head>
 <?php 
 include_once '../../header.php';
@@ -15,9 +15,9 @@ echo getHeader(2);
 ?>
 <body class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*-nGOaPQzlTbUGkndeFdxbQ.png'); background-size:cover; background-repeat: no-repeat;">
     <div class="card p-4 bg-dark text-white" style="width: 35rem; height: auto; box-sizing: border-box;">
-    <h2 class="card-title text-center"></h2>
+    <h2 class="card-title text-center">Chain of Responsability</h2>
     <div class="card border border-dark" style="width: 32rem; box-sizing: border-box;">
-        <img class="card-img-top border border-dark" src="" alt="Card image cap" style="height: 350px; object-fit: cover;">
+        <img class="card-img-top border border-dark" src="https://refactoring.guru/images/patterns/content/chain-of-responsibility/chain-of-responsibility.png" alt="Card image cap" style="height: 350px; object-fit: cover;">
         
         <!-- Contenedor desplazable -->
         <div class="card-body" style="max-height: 300px; overflow-y: auto;">
