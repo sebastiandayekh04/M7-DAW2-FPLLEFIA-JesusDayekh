@@ -1,21 +1,23 @@
 <?php
 
 function getHeader($level) {
-    $linkHeader = "index.php";
-
+    
     switch($level) {
         case 1:
-            $linkHeader = "../".$linkHeader;
+            $linkHeader = "../";
         break;
         case 2:
-            $linkHeader = "../../".$linkHeader;
+            $linkHeader = "../../";
+        break;
+        case 3:
+            $linkHeader = "../../../";
         break;
         default:
-        $linkHeader = "./".$linkHeader;
+        $linkHeader = "./";
     }
 
     return "<header class=\"bg-light p-3 text-center w-100 position-fixed top-0 start-0 z-5\" style=\"height:auto; z-index: 1200 !important\">
-    <a href=\"./{$linkHeader}\" class=\"text-black text-decoration-none d-block\" style=\"font-size: 28px; font-weight: bold;\">
+    <a href=\"{$linkHeader}index.php\" class=\"text-black text-decoration-none d-block\" style=\"font-size: 28px; font-weight: bold;\">
         Patrones de Diseño en PHP
     </a>
 
@@ -26,9 +28,9 @@ function getHeader($level) {
             Menú de Patrones
         </button>
         <div class=\"dropdown-menu text-center w-100\" aria-labelledby=\"dropdownMenuButton\">
-            <a class=\"dropdown-item\" href=\"./creacion.php\">Patrones de Creación</a>
-            <a class=\"dropdown-item\" href=\"./comportament.php\">Patrones de Comportamiento</a>
-            <a class=\"dropdown-item\" href=\"./estructurals.php\">Patrones Estructurales</a>
+            <a class=\"dropdown-item\" href=\"{$linkHeader}creacion.php\">Patrones de Creación</a>
+            <a class=\"dropdown-item\" href=\"{$linkHeader}comportament.php\">Patrones de Comportamiento</a>
+            <a class=\"dropdown-item\" href=\"{$linkHeader}estructurals.php\">Patrones Estructurales</a>
         </div>
     </div>
 </div>

@@ -29,38 +29,37 @@ echo getHeader(1);
 
 ?>
 <body class="principalBody">
-   
-    <div class="card p-3 bg-dark text-white" style="width: 20rem; margin-left:40%">
-        <h2 class="card-title text-center"></h2>
+    <div class="card p-3 bg-dark text-white" style="width: 20rem;">
+        <h2 class="card-title text-center">Patrones Estructurales</h2>
         <form method="post">
             <div class="mb-3">
-                <label for="tipoPatron" class="form-label">Tipo de Patron Estructural:</label>
-                <select name="tipoPatron" id="tipoPatron" class="form-select" style="z-index: 1000 !important;" required>
-                    <option> </option>
+                <label for="tipoPatron" class="form-label">Tipo de Patrón Estructural:</label>
+                <select name="tipoPatron" id="tipoPatron" class="form-select" required>
+                    <option value="" disabled selected>Elige una opción</option>
                     <option value="Bridge">Bridge</option>
                     <option value="Composite">Composite</option>
                     <option value="Proxy">Proxy</option>
                 </select>
-
             </div>
 
             <div class="d-flex justify-content-center">
-                <button class="btn btn-info " type="submit">Enviar</button>
+                <button class="btn btn-info btn-sm" type="submit">Enviar</button>
             </div>
-
         </form>
 
-        <div class="card border border-dark" style="width: 19rem;">
-            <img class="card-img-top border border-dark" src="https://refactoring.guru/images/patterns/content/builder/builder-es.png" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text text-black">Los patrones de diseño estructural son patrones de diseño que facilitan el diseño al identificar una forma sencilla de realizar relaciones entre entidades. Los ejemplos de patrones estructurales incluyen: Patrón de adaptador: 'adapta' una interfaz para una clase en una que espera un cliente.</p>
+        <div class="card border border-dark mt-3" style="width: 18rem;">
+            <img class="card-img-top border border-dark" src="https://refactoring.guru/images/patterns/content/builder/builder-es.png" 
+                 alt="Patrón Estructural" style="height: 150px; object-fit: cover;">
+            <div class="card-body p-2">
+                <p class="card-text text-black small">
+                    Los patrones de diseño estructural son patrones de diseño que facilitan el diseño al identificar una forma sencilla de realizar relaciones entre entidades. Ejemplos incluyen: 
+                    <strong>Patrón de adaptador</strong>: 'adapta' una interfaz para una clase en una que espera un cliente.
+                </p>
             </div>
         </div>
-
     </div>
-
-
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>

@@ -18,7 +18,7 @@ if (isset($_POST['tipoPatron']) && !empty($_POST['tipoPatron'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    l
+    <link href="./css/styles.css" rel="stylesheet">
     <title>Patrones de Comportamiento</title>
 </head>
 <?php
@@ -28,34 +28,40 @@ echo getHeader(1);
 
 ?>
 
-<body class="principalBody" >
-    <div class="card p-3 bg-dark text-white" style="width: 20rem;">
-        <h2 class="card-title text-center"></h2>
-        <form method="post">
-            <div class="mb-3">
-                <label for="tipoPatron" class="form-label">Tipo de Patron de Comportamiento:</label>
-                <select name="tipoPatron" id="tipoPatron" class="form-select" style="z-index: 1000 !important;" required>
-                    <option> </option>
-                    <option value="ChainOfResponsability">Chain Of Reflection</option>
-                    <option value="Memento">Memento</option>
-                    <option value="Observer">Observer</option>
-                </select>
-            </div>
+<body class="principalBody">
+    <div class="d-flex justify-content-center align-items-center vh-100"> 
+        <div class="card p-3 bg-dark text-white" style="width: 20rem;">
+            <h2 class="card-title text-center">Patrones de Comportamiento</h2>
 
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-info " type="submit">Enviar</button>
-            </div>
-        </form>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="tipoPatron" class="form-label">Selecciona un patrón:</label>
+                    <select name="tipoPatron" id="tipoPatron" class="form-select" required>
+                        <option value="" disabled selected>Elige una opción</option>
+                        <option value="ChainOfResponsability">Chain Of Responsibility</option>
+                        <option value="Memento">Memento</option>
+                        <option value="Observer">Observer</option>
+                    </select>
+                </div>
 
-        <div class="card border border-dark" style="width: 19rem;">
-            <img class="card-img-top border border-dark" src="https://yosoydani.com/wp-content/uploads/2017/11/unnamed-file-1.jpg" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text text-black">Los patrones de comportamiento tratan con algoritmos y la asignación de responsabilidades entre objetos. Permite pasar solicitudes a lo largo de una cadena de manejadores. Al recibir una solicitud, cada manejador decide si la procesa o si la pasa al siguiente manejador de la cadena.</p>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-info btn-sm" type="submit">Enviar</button>
+                </div>
+            </form>
+
+            <div class="card border border-dark mt-3" style="width: 18rem;">
+                <img class="card-img-top border" src="https://yosoydani.com/wp-content/uploads/2017/11/unnamed-file-1.jpg" 
+                     alt="Patrón de Comportamiento" style="height: 150px; object-fit: cover;">
+                <div class="card-body p-2">
+                    <p class="card-text text-black small">
+                        Los patrones de comportamiento tratan con algoritmos y la asignación de responsabilidades entre objetos. Permiten pasar solicitudes a lo largo de una cadena de manejadores, donde cada manejador decide si la procesa o la pasa al siguiente.
+                    </p>
+                </div>
             </div>
         </div>
-
     </div>
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
