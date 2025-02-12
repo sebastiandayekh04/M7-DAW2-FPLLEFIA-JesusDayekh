@@ -1,0 +1,13 @@
+.btn-imagen {
+    display: inline-block;
+    /*border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;*/
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-imagen:hover {
+    border-color: #007bff;
+    transform: scale(1.05);
+  }
