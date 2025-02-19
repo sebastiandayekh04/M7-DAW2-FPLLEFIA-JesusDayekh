@@ -6,7 +6,7 @@ $result = $mysqli->query("SELECT * FROM clientes ORDER BY id DESC");
 print_r($result);
 
 
-$clientes = $result->fetch_all("utf8mb4");
+$clientes = $result->fetch_all("MYSQLI_ASSOC");
 
 
 print '<br><br><br><br><br><br><br>';
