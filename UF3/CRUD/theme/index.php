@@ -2,14 +2,14 @@
 require_once('config.php');
 // Consulta para obtener los proyectos
 $result = $mysqli->query('SELECT * FROM PROJECTS');
-print_r($result);
+//print_r($result);
 
 
 
 $projects = $result->fetch_all(MYSQLI_ASSOC);
 
 
-print_r($projects);
+//print_r($projects);
 
 
 
@@ -320,17 +320,17 @@ print_r($projects);
 
       <div class="row no-gutters shuffle-wrapper">
         <!-- AQUI PONDRAS UN FOREACH DE PHP E IRAS RECORRIENDO EL ARRAY PROJECTS -->
-      
-      <div class="col-lg-4 col-md-6 shuffle-item">
-          <div class="project-item">
-            <img src="images/project/project-1.jpg" alt="project-image" class="img-fluid w-100">
-            <div class="project-hover bg-secondary px-4 py-3">
-              <a href="#" class="text-white h4">$project['title']</a>
-              <a href="#"><i class="ti-link icon-xs text-white"></i></a>
+        <?php foreach ($project as $projects): ?>
+          <div class="col-lg-4 col-md-6 shuffle-item">
+            <div class="project-item">
+              <img src="images/project/project-1.jpg" alt="project-image" class="img-fluid w-100">
+              <div class="project-hover bg-secondary px-4 py-3">
+                <a href="#" class="text-white h4">$project['title']</a>
+                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
+              </div>
             </div>
           </div>
-        </div>
-
+        <?php endforeach; ?>
       </div>
     </div>
   </section>
