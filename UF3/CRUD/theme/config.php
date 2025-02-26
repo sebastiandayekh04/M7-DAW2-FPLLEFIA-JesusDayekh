@@ -1,6 +1,6 @@
 <?php
 $host = 'mysql-dayekh.alwaysdata.net';
-$dbname = 'dayekh_barber';
+$dbname = 'dayekh_uf3';
 $username = 'dayekh';
 $password = 'sd01102004';
 
