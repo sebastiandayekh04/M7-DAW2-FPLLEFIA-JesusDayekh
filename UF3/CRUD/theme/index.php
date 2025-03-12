@@ -4,14 +4,9 @@ require_once('config.php');
 $result = $mysqli->query('SELECT * FROM PROJECTS');
 //print_r($result);
 
-
-
 $projects = $result->fetch_all(MYSQLI_ASSOC);
 
-
 //print_r($projects);
-
-
 
 ?>
 <!DOCTYPE html>
@@ -55,50 +50,24 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
 <body>
 
 
-  <header class="navigation fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Egen"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <header class="bg-dark p-3 d-flex justify-content-between align-items-center">
+    <h1 class="text-light fw-bold fs-3">Tarjetas de datos</h1>
 
-      <div class="collapse navbar-collapse text-center" id="navigation">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="portfolio.html">Portfolio</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="team.html">Team</a>
-              <a class="dropdown-item" href="team-single.html">Team Details</a>
-              <a class="dropdown-item" href="career.html">Career</a>
-              <a class="dropdown-item" href="career-single.html">Career Details</a>
-              <a class="dropdown-item" href="blog-single.html">Blog Details</a>
-              <a class="dropdown-item" href="pricing.html">Pricing</a></a>
-              <a class="dropdown-item" href="faqs.html">FAQ's</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </div>
+    <nav class="d-flex align-items-center">
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" class="rounded-circle me-2" width="40" height="40">
+        <span class="text-light me-3"><?= htmlspecialchars($_SESSION['user_name']) ?></span>
+        <a href="logout.php" class="btn btn-outline-light btn-sm">Cerrar Sesión</a>
+
+        <?php if ($_SESSION['user_role'] === 'admin'): ?>
+          <a href="admin.php" class="ms-3">
+            <img src="https://tecnitool.es/images/featured/invencion-de-la-rueda.jpg" alt="Panel de Administración" width="30" height="30">
+          </a>
+        <?php endif; ?>
+      <?php endif; ?>
     </nav>
   </header>
+
 
   <!-- banner -->
   <section class="banner bg-cover position-relative d-flex justify-content-center align-items-center"
@@ -468,64 +437,7 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
   <!-- /blog -->
 
   <!-- footer -->
-  <footer class="bg-secondary position-relative">
-    <img src="images/backgrounds/map.png" class="img-fluid overlay-image" alt="">
-    <div class="section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-3 col-6">
-            <h4 class="text-white mb-5">About</h4>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-light d-block mb-3">Service</a></li>
-              <li><a href="#" class="text-light d-block mb-3">Conatact</a></li>
-              <li><a href="#" class="text-light d-block mb-3">About us</a></li>
-              <li><a href="#" class="text-light d-block mb-3">Blog</a></li>
-              <li><a href="#" class="text-light d-block mb-3">Support</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 col-6">
-            <h4 class="text-white mb-5">Company</h4>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-light d-block mb-3">Service</a></li>
-              <li><a href="#" class="text-light d-block mb-3">Conatact</a></li>
-              <li><a href="#" class="text-light d-block mb-3">About us</a></li>
-              <li><a href="#" class="text-light d-block mb-3">Blog</a></li>
-              <li><a href="#" class="text-light d-block mb-3">Support</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <div class="bg-white p-4">
-              <h3>Contact us</h3>
-              <form action="#">
-                <input type="text" id="name" name="name" class="form-control mb-4 px-0" placeholder="Full name">
-                <input type="text" id="name" name="name" class="form-control mb-4 px-0" placeholder="Email address">
-                <textarea name="message" id="message" class="form-control mb-4 px-0" placeholder="Message"></textarea>
-                <button class="btn btn-primary" type="submit">Send</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pb-4">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 text-center text-md-left">
-            <p class="text-light mb-0">Copyright &copy; 2019 a theme by <a class="text-gradient-primary" href="https://themefisher.com">themefisher.com</a>
-            </p>
-          </div>
-          <div class="col-md-6">
-            <ul class="list-inline text-md-right text-center">
-              <li class="list-inline-item"><a class="d-block p-3 text-white" href="#"><i class="ti-facebook"></i></a></li>
-              <li class="list-inline-item"><a class="d-block p-3 text-white" href="#"><i class="ti-twitter-alt"></i></a></li>
-              <li class="list-inline-item"><a class="d-block p-3 text-white" href="#"><i class="ti-instagram"></i></a></li>
-              <li class="list-inline-item"><a class="d-block p-3 text-white" href="#"><i class="ti-github"></i></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <?php include 'footer.php' ?>
   <!-- /footer -->
 
   <!-- jQuery -->

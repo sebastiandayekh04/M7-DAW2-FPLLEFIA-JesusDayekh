@@ -1,43 +1,46 @@
 <?php
 session_start();
-require_once('config.php');
+require_once ('config.php');
 
-
-//0.Comprobar si el formulario ha sido enviado
+// 0. Comprobar si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //Recoger datos del formulario
+    // 1. Recoger datos del formulario
     $name = $_POST['name'];
-    $surname = $_POST['surname'];
-    $password = $_POST['password'];
+    $surname = $_POST['surname'];  // Recoger apellido
     $email = $_POST['email'];
-    $avatar = $_POST['avatar'];
-
-    //2.cifrar la password con password_hash
-    $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-
-    //3.Preparar la consuklta antes de insertar para evitar el sql inception
-    $stmt = $mysqli->prepare(
-        "INSERT INTO users (name, surname, email, avatar, password, rol, age, job, date_register) VALUES (?, ?, ?, ?, ?, ?,  ?, NOW())"
-    );
-    //Comprobar que la preparacion tuvo exito
-    if (!$stmt) {
-        die('Error en la preparacion: ' . $mysqli->error);
-    }
-    //5. Bindear los parametros
-    $stmt->bind_param('sssssis', $name, $surname, $email, $avatar, $passwordHashed, $age, $job);
-
-    //6. Ejecutar la consulta 
-
-    if ($stmt->execute()) {
-        echo 'Usuario registrado correctamente';
-    } else {
-        echo 'Error al registar al usuario';
-    }
-
-    //7.cerrar la conexion
-    $stmt->close();
-    $mysqli->close();
+    $password = $_POST['password'];
+    $avatar = $_POST['avatar'];    // Recoger avatar (opcional)
+    $age = $_POST['age'];          // Recoger edad
 }
+
+// 2. Cifrar la contraseña con password_hash
+$passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+
+// 3. Preparar la consulta antes de insertar para evitar SQL injection
+$stmt = $mysqli->prepare(
+    "INSERT INTO Users (name, surname, email, avatar, password, rol, age, date_register) 
+     VALUES (?, ?, ?, ?, ?, 'user', ?, NOW())"
+);
+
+// 4. Comprobar que la preparación de la consulta tuvo éxito
+if (!$stmt) {
+    echo 'Error en la preparación de la consulta: ' . $mysqli->error;
+    exit;
+}
+
+// 5. Bindear los parámetros
+$stmt->bind_param('sssssi', $name, $surname, $email, $avatar, $passwordHashed, $age);
+
+// 6. Ejecutar la consulta
+if ($stmt->execute()) {
+    echo 'Usuario registrado con éxito';
+} else {
+    echo 'Error al registrar el usuario: ' . $mysqli->error;
+}
+
+// 7. Cerrar la declaración
+$stmt->close();
+$mysqli->close();
 
 ?>
 
@@ -72,4 +75,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" value="Registrarse">
     </form>
 </body>
+
 </html>

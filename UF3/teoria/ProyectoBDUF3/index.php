@@ -25,6 +25,25 @@ $projects = $resultProjects->fetch_all(MYSQLI_ASSOC);
 </head>
 
 <body class="bg-gray-100">
+
+    <header class="bg-dark p-3 d-flex justify-content-between align-items-center">
+        <h1 class="text-light fw-bold fs-3">Tarjetas de datos</h1>
+
+        <nav class="d-flex align-items-center">
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" class="rounded-circle me-2" width="40" height="40">
+                <span class="text-light me-3"><?= htmlspecialchars($_SESSION['user_name']) ?></span>
+                <a href="logout.php" class="btn btn-outline-light btn-sm">Cerrar Sesión</a>
+
+                <?php if ($_SESSION['user_role'] === 'admin'): ?>
+                    <a href="admin.php" class="ms-3">
+                        <img src="https://tecnitool.es/images/featured/invencion-de-la-rueda.jpg" alt="Panel de Administración" width="30" height="30">
+                    </a>
+                <?php endif; ?>
+            <?php endif; ?>
+        </nav>
+    </header>
+
     <div class="container mx-auto p-4">
         <!-- Sección de Noticias -->
         <h1 class="text-3xl font-bold mb-6 text-center">Noticias Recientes</h1>
