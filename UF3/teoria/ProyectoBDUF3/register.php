@@ -2,40 +2,46 @@
 session_start();
 require_once 'config.php';
 
-// 1. Comprobar si el formulario ha sido enviado
+// 0. Comprobar si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // 2. Recoger datos del formulario en variables
+    // 1. Recoger datos del formulario
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];  // Recoger apellido
     $email = $_POST['email'];
     $password = $_POST['password'];
-
-    // 3. Ejecutar la consulta
-    $result = mysqli_query($mysqli, "SELECT * FROM Users WHERE email = '$email' LIMIT 1");
-
-    // 4. Comprobar si hay resultados
-    if ($result && $result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        // 5. Comprobar si la contraseña es correcta
-        if (password_verify($password, $user['password'])) {
-            // 6. Guardar el usuario en la sesión
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_email'] = $user['email'];
-            $_SESSION['user_name'] = $user['name'];
-            $_SESSION['user_surname'] = $user['surname'];
-            $_SESSION['user_avatar'] = $user['avatar'];
-            $_SESSION['user_rol'] = $user['rol'];
-            $_SESSION['user_age'] = $user['age'];
-            $_SESSION['user_date_register'] = $user['date_register'];
-
-            // 7. Redirigir al usuario a la página de inicio
-            header('Location: index.php');
-            exit;
-        } else {
-            echo 'Contraseña incorrecta.';
-        }
-    } else {
-        echo 'Usuario no encontrado.';
-    }
+    $avatar = $_POST['avatar'];    // Recoger avatar (opcional)
+    $age = $_POST['age'];          // Recoger edad
 }
+
+// 2. Cifrar la contraseña con password_hash
+$passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+
+// 3. Preparar la consulta antes de insertar para evitar SQL injection
+$stmt = $mysqli->prepare(
+    "INSERT INTO Users (name, surname, email, avatar, password, rol, age, date_register) 
+     VALUES (?, ?, ?, ?, ?, 'user', ?, NOW())"
+);
+
+// 4. Comprobar que la preparación de la consulta tuvo éxito
+if (!$stmt) {
+    echo 'Error en la preparación de la consulta: ' . $mysqli->error;
+    exit;
+}
+
+// 5. Bindear los parámetros
+$stmt->bind_param('sssssi', $name, $surname, $email, $avatar, $passwordHashed, $age);
+
+// 6. Ejecutar la consulta
+if ($stmt->execute()) {
+    echo 'Usuario registrado con éxito';
+} else {
+    echo 'Error al registrar el usuario: ' . $mysqli->error;
+}
+
+// 7. Cerrar la declaración
+$stmt->close();
+$mysqli->close();
+
 ?>
 
 <html lang="es">
@@ -43,21 +49,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Registro</title>
 </head>
 
 <body>
-    <h1>Inicio de Sesion</h1>
+    <h1>Registro</h1>
     <form action="" method="POST">
+        <label for="name">Nombre</label><br>
+        <input type="text" name="name" id="name" required><br>
+
+        <label for="surname">Apellido</label><br>
+        <input type="text" name="surname" id="surname" required><br>
+
         <label for="email">Correo electrónico</label><br>
         <input type="email" name="email" id="email" required><br>
 
         <label for="password">Contraseña</label><br>
         <input type="password" name="password" id="password" required><br>
 
-        <input type="submit" value="Iniciar sesión">
-    </form>
+        <label for="avatar">Avatar</label><br>
+        <input type="text" name="avatar" id="avatar"><br>
 
+        <label for="age">Edad</label><br>
+        <input type="number" name="age" id="age" required><br>
+
+        <input type="submit" value="Registrarse">
+    </form>
 </body>
 
 </html>
