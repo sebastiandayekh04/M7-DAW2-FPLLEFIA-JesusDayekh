@@ -1,12 +1,19 @@
 <?php
+session_start();
 require_once('config.php');
 // Consulta para obtener los proyectos
 $result = $mysqli->query('SELECT * FROM PROJECTS');
 //print_r($result);
-
-$projects = $result->fetch_all(MYSQLI_ASSOC);
+$project = $result->fetch_all(MYSQLI_ASSOC);
 
 //print_r($projects);
+
+
+//agarramos las news de bbdd
+$resultNews = $mysqli->query('SELECT * FROM NEWS');
+$news = $resultNews->fetch_all(MYSQLI_ASSOC);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +24,7 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
 
 <head>
   <meta charset="utf-8">
-  <title>Agen | Bootstrap Agency Template</title>
+  <title>Inicio</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -283,27 +290,30 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
       <div class="row">
         <div class="col-lg-10 mx-auto text-center">
           <h2>Our Feature Works</h2>
-          <div class="section-border"></div>
-        </div>
-      </div>
 
-      <div class="row no-gutters shuffle-wrapper">
-        <!-- AQUI PONDRAS UN FOREACH DE PHP E IRAS RECORRIENDO EL ARRAY PROJECTS -->
-        <?php foreach ($project as $projects): ?>
-          <div class="col-lg-4 col-md-6 shuffle-item">
-            <div class="project-item">
-              <img src="images/project/project-1.jpg" alt="project-image" class="img-fluid w-100">
-              <div class="project-hover bg-secondary px-4 py-3">
-                <a href="#" class="text-white h4">$project['title']</a>
-                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
-              </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
+          <div class="section-border">
+            <div class="row no-gutters shuffle-wrapper">
+              <!-- AQUI PONDRAS UN FOREACH DE PHP E IRAS RECORRIENDO EL ARRAY PROJECTS -->
+              <?php foreach ($project as $projects): ?>
+                <div class="col-lg-4 col-md-6 shuffle-item">
+                  <div class="project-item">
+                    <img src="<?= htmlspecialchars($projects['thumbnail']) ?>" alt="<?= htmlspecialchars($projects['title']) ?>" class="img-fluid w-100">
+                    <div class="project-hover bg-secondary px-4 py-3">
+                      <p class="text-white h4"><?= htmlspecialchars($projects['description']) ?></p>
+                      <a href="#"><i class="ti-link icon-xs text-white"><?= htmlspecialchars($projects['url']) ?></i></a>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div> <!-- Cierre de shuffle-wrapper -->
+          </div> <!-- Cierre de section-border -->
+
+        </div> <!-- Cierre de col-lg-10 mx-auto text-center -->
+      </div> <!-- Cierre de row -->
+    </div> <!-- Cierre de container-fluid -->
   </section>
   <!-- /project -->
+
 
   <!-- call to action -->
   <section>
@@ -398,39 +408,21 @@ $projects = $result->fetch_all(MYSQLI_ASSOC);
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-          <article class="card">
-            <img src="images/blog/post-1.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="#" class="btn btn-transparent">Read more</a>
+        <?php foreach ($news as $item): ?>
+          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+            <div class="card hover-shadow">
+              <img src="<?= htmlspecialchars($item['thumbnail']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-top">
+              <div class="card-body text-center">
+                <h4><a class="text-dark" href="blog-single.html"><?= htmlspecialchars($item['title']) ?></a></h4>
+                <p class="text-gray-600 mb-2"><?= htmlspecialchars($item['subtitle']) ?></p>
+                <p class="text-gray-700 text-sm"><?= htmlspecialchars($item['description']) ?></p>
+                <p class="text-xs text-gray-500 mt-2"><?= htmlspecialchars($item['new_data']) ?></p>
+              </div>
             </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-          <article class="card">
-            <img src="images/blog/post-2.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="#" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-          <article class="card">
-            <img src="images/blog/post-3.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="#" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
+          </div>
+        <?php endforeach; ?>
+
+
       </div>
     </div>
   </section>

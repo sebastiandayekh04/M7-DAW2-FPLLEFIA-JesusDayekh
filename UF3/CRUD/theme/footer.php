@@ -41,7 +41,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-left">
-                    <p class="text-light mb-0">Copyright 2025 de David Henrique</p>
+                    <p class="text-light mb-0">Copyright 2025 de Sebastian Dayekh</p>
                 </div>
                 <div class="col-md-6">
                     <ul class="list-inline text-md-right text-center">

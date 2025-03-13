@@ -1,8 +1,11 @@
 <?php
 require_once 'config.php';
+if (!isset($mysqli)) {
+    die("Error: La variable \$mysqli no está definida. Verifica config.php.");
+}
 
 // Consulta para obtener las noticias ordenadas por fecha (descendente)
-$users = $mysqli->query("SELECT * FROM users");
+$users = $mysqli->query("SELECT * FROM USERS");
 $usersArray = $users->fetch_all(MYSQLI_ASSOC);
 
 
