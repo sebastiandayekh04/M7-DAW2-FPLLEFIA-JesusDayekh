@@ -1,198 +1,88 @@
-<body>
+  <?php
+  session_start();
+  require_once('config.php');
+
+
+
+  //agarramos las news de bbdd
+  $resultNews = $mysqli->query('SELECT * FROM NEWS');
+  $news = $resultNews->fetch_all(MYSQLI_ASSOC);
+
+
+  ?>
   <?php include 'header.php'; ?>
 
-  <header class="navigation fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Egen"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <body>
 
-      <div class="collapse navbar-collapse text-center" id="navigation">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="services.html">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="portfolio.html">Portfolio</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="team.html">Team</a>
-              <a class="dropdown-item" href="team-single.html">Team Details</a>
-              <a class="dropdown-item" href="career.html">Career</a>
-              <a class="dropdown-item" href="career-single.html">Career Details</a>
-              <a class="dropdown-item" href="blog-single.html">Blog Details</a>
-              <a class="dropdown-item" href="pricing.html">Pricing</a></a>
-              <a class="dropdown-item" href="faqs.html">FAQ's</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
 
-  <!-- page-title -->
-  <section class="page-title bg-cover" data-background="images/backgrounds/page-title.jpg">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h1 class="display-1 text-white font-weight-bold font-primary">Our Blog</h1>
+
+
+    <!-- page-title -->
+    <section class="page-title bg-cover" data-background="https://assets.goal.com/images/v3/bltb8fe5986e586682e/GettyImages-989679778.jpg?auto=webp&format=pjpg&width=3840&quality=60">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1 class="display-1 text-white font-weight-bold font-primary">Nuestro Blog</h1>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- /page-title -->
+    </section>
+    <!-- /page-title -->
 
-  <!-- blog -->
-  <section class="section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-1.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
+    <!-- blog -->
+    <section class="section">
+      <div class="container">
+        <div class="row">
+
+          <?php
+          foreach ($news as $new) { ?>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <article class="card">
+                <img src="<?php echo $new['thumbnail'] ?>" alt="<?php echo $new['title'] ?>" class="card-img-top mb-2">
+                <div class="card-body p-0"> 
+                  <time><?php echo $new['new_data'] ?></time>
+                  <a href="blog-single.php?id=<?php echo $new['id'] ?>" class="h4 card-title d-block my-3 text-dark hover-text-underline"><?php echo $new['title'] ?></a>
+                  <p><?php echo $new['description'] ?></p>
+                  <a href="blog-single.php?id=<?php echo $new['id'] ?>" class="btn btn-transparent">Leer mas</a>
+                </div>
+              </article>
             </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-2.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-3.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-1.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-2.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-3.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-1.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-2.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-          <article class="card">
-            <img src="images/blog/post-3.jpg" alt="post-thumb" class="card-img-top mb-2">
-            <div class="card-body p-0">
-              <time>January 15, 2018</time>
-              <a href="blog-single.html" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                Book Covers Reflect the Design</a>
-              <a href="blog-single.html" class="btn btn-transparent">Read more</a>
-            </div>
-          </article>
+          <?php } ?>
+
+          
+
         </div>
       </div>
-    </div>
-  </section>
-  <!-- /blog -->
+    </section>
+    <!-- /blog -->
 
-  <!-- footer -->
-  <?php include 'footer.php'; ?>
-  <!-- /footer -->
+    <!-- footer -->
+    <?php include 'footer.php'; ?>
+    <!-- /footer -->
 
-  <!-- jQuery -->
-  <script src="plugins/jQuery/jquery.min.js"></script>
-  <!-- Bootstrap JS -->
-  <script src="plugins/bootstrap/bootstrap.min.js"></script>
-  <!-- slick slider -->
-  <script src="plugins/slick/slick.min.js"></script>
-  <!-- venobox -->
-  <script src="plugins/venobox/venobox.min.js"></script>
-  <!-- shuffle -->
-  <script src="plugins/shuffle/shuffle.min.js"></script>
-  <!-- apear js -->
-  <script src="plugins/counto/apear.js"></script>
-  <!-- counter -->
-  <script src="plugins/counto/counTo.js"></script>
-  <!-- card slider -->
-  <script src="plugins/card-slider/js/card-slider-min.js"></script>
-  <!-- google map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
-  <script src="plugins/google-map/gmap.js"></script>
+    <!-- jQuery -->
+    <script src="plugins/jQuery/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="plugins/bootstrap/bootstrap.min.js"></script>
+    <!-- slick slider -->
+    <script src="plugins/slick/slick.min.js"></script>
+    <!-- venobox -->
+    <script src="plugins/venobox/venobox.min.js"></script>
+    <!-- shuffle -->
+    <script src="plugins/shuffle/shuffle.min.js"></script>
+    <!-- apear js -->
+    <script src="plugins/counto/apear.js"></script>
+    <!-- counter -->
+    <script src="plugins/counto/counTo.js"></script>
+    <!-- card slider -->
+    <script src="plugins/card-slider/js/card-slider-min.js"></script>
+    <!-- google map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
+    <script src="plugins/google-map/gmap.js"></script>
 
-  <!-- Main Script -->
-  <script src="js/script.js"></script>
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
 
-</body>
+  </body>
 
-</html>
+  </html>

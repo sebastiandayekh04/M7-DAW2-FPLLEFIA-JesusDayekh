@@ -32,12 +32,9 @@
 
 <body>
 
-
     <header class="navigation fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <a class="navbar-brand" href="index.php">
-                <h1 class="text-white">MasterWebs</h1>
-            </a>
+            <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="Egen"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
                 aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -52,18 +49,29 @@
                         <a class="nav-link" href="about.php">About</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="services.php">Services</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="blog.php">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="portfolio.php">Portfolio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faqs.php">FAQ's</a>
-                    </li>
+                    <nav class="d-flex align-items-center">
+                        <?php if (isset($_SESSION['user_id'])): ?>
+                            <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" class="rounded-circle me-2" width="40" height="40">
+                            <span class="text-light me-3"><?= htmlspecialchars($_SESSION['user_name']) ?></span>
+                            <a href="logout.php" class="btn btn-outline-light btn-sm">Cerrar Sesión</a>
 
-            </div>
-            </li>
-            </ul>
+                            <?php if ($_SESSION['user_role'] === 'admin'): ?>
+                                <a href="admin.php" class="ms-3">
+                                    <img src="https://tecnitool.es/images/featured/invencion-de-la-rueda.jpg" alt="Panel de Administración" width="30" height="30">
+                                </a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </nav>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
