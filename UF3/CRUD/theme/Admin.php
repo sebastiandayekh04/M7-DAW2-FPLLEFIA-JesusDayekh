@@ -28,11 +28,16 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
 <body class="bg-light">
     <div class="container mt-5">
+        <div class="text-center mb-4">
+            <a href="index.php" class="btn btn-secondary btn-lg">Volver al Inicio</a>
+        </div>
         <h1 class="text-center mb-4">Panel de Administrador</h1>
 
         <!-- Testimonios -->
         <h2 class="text-primary">Testimonios</h2>
+        <a href="../ProyectoBDUF3/testomonials/add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
+
             <thead class="table-dark">
                 <tr>
                     <th>Nombre</th>
@@ -60,6 +65,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Noticias -->
         <h2 class="text-primary">Noticias</h2>
+        <a href="../ProyectoBDUF3/news/add-news.php?id=<?= $news['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -86,6 +92,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Proyectos -->
         <h2 class="text-primary">Proyectos</h2>
+        <a href="../ProyectoBDUF3/projects/add-projects.php?id=<?= $projects['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
