@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_age'] = $user['age'];
             $_SESSION['user_date_register'] = $user['date_register'];
 
-            // 7. Redirigir al usuario a la página de inicio
+           
             header('Location: index.php');
             exit;
         } else {

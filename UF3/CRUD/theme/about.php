@@ -1,7 +1,5 @@
+<?php include 'header.php'; ?>
 <?php
-  session_start();
-require_once('config.php');
-
 //agarramos las news de bbdd
 $resultNews = $mysqli->query('SELECT * FROM NEWS');
 $news = $resultNews->fetch_all(MYSQLI_ASSOC);
@@ -16,7 +14,7 @@ $resultTestimonials = $mysqli->query('SELECT * FROM TESTIMONIALS');
 $testimonials = $resultTestimonials->fetch_all(MYSQLI_ASSOC);
 
 ?>
-<?php include 'header.php'; ?>
+
 
 
 <!-- page-title -->

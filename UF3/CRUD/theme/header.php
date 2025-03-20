@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once('config.php');
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -48,9 +52,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="about.php">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="services.php">Services</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="blog.php">Blog</a>
                     </li>
@@ -58,17 +60,28 @@
                         <a class="nav-link" href="portfolio.php">Portfolio</a>
                     </li>
                     <nav class="d-flex align-items-center">
-                        <?php if (isset($_SESSION['user_id'])): ?>
-                            <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" class="rounded-circle me-2" width="40" height="40">
-                            <span class="text-light me-3"><?= htmlspecialchars($_SESSION['user_name']) ?></span>
-                            <a href="logout.php" class="btn btn-outline-light btn-sm">Cerrar Sesión</a>
+                        <div class="dropdown">
 
-                            <?php if ($_SESSION['user_role'] === 'admin'): ?>
-                                <a href="admin.php" class="ms-3">
-                                    <img src="https://tecnitool.es/images/featured/invencion-de-la-rueda.jpg" alt="Panel de Administración" width="30" height="30">
-                                </a>
+                            <?php if (isset($_SESSION['user_id'])): ?>
+                                <img src="<?= htmlspecialchars($_SESSION['user_avatar']) ?>" alt="Avatar" class="rounded-circle me-2 " width="40" height="40" ">
+                                <span class=" text-light me-3"><?= htmlspecialchars($_SESSION['user_name']) ?></span>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                    <li><a class="dropdown-item" href="logout.php">Cerrar Sesión</a></li>
+
+                                    <?php if ($_SESSION['user_rol'] == 'admin'): ?>
+                                        <li><a class="dropdown-item" href="Admin.php">Panel de Administración</a></li>
+                                    <?php endif; ?>
+
+                                </ul>
+                            <?php else: ?>
+                                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Avatar" class="rounded-circle me-2 dropdown-toggle" width="40" height="40" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                                <span class="text-light me-3">Invitado</span>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                    <li><a class="dropdown-item" href="login.php">Iniciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="register.php">Registrarse</a></li>
+                                </ul>
                             <?php endif; ?>
-                        <?php endif; ?>
+                        </div>
                     </nav>
                     </li>
                 </ul>

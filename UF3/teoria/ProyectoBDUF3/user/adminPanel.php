@@ -10,7 +10,7 @@ if ($_SESSION['user_rol'] !== 'admin') {
 }
 
 // Extracción de testimonios
-$resultTestimonios = $mysqli->query("SELECT * FROM Testimonials");
+$resultTestimonios = $mysqli->query("SELECT * FROM TESTIMONIALS");
 
 ?>
 <html lang="es">
