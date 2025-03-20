@@ -355,8 +355,8 @@ $users = $resultUsers->fetch_all(MYSQLI_ASSOC);
               <img src="<?= htmlspecialchars($item['thumbnail']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-top">
               <div class="card-body text-center">
                 <h4><a class="text-dark" href="blog-single.html"><?= htmlspecialchars($item['title']) ?></a></h4>
-                <p class="text-gray-600 mb-2"><?= htmlspecialchars($item['subtitle']) ?></p>
-                <p class="text-gray-700 text-sm"><?= htmlspecialchars($item['description']) ?></p>
+               
+                <p class="text-gray-700 text-sm"><?= htmlspecialchars($item['subtitle']) ?></p>
                 <p class="text-xs text-gray-500 mt-2"><?= htmlspecialchars($item['new_data']) ?></p>
               </div>
             </div>

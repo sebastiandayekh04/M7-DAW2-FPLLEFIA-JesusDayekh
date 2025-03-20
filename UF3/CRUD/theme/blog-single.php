@@ -1,9 +1,23 @@
     <?php
-    require_once('config.php');
     session_start();
+    require_once('config.php');
+
     //agarramos las news de bbdd
-    $resultNews = $mysqli->query('SELECT * FROM NEWS  where id=' . $_GET['id']);
+    $resultNews = $mysqli->query('SELECT * FROM NEWS where id=' . $_GET['id']);
     $news = $resultNews->fetch_all(MYSQLI_ASSOC);
+
+    // Obtener los comentarios con la información del usuario
+    $resultComments = $mysqli->query(
+      "
+    SELECT COMMENTS.*, USERS.name, USERS.avatar 
+    FROM COMMENTS 
+    INNER JOIN USERS ON COMMENTS.user_id = USERS.id 
+    WHERE COMMENTS.new_id = " . $_GET['id']
+    );
+
+    $comments = $resultComments->fetch_all(MYSQLI_ASSOC);
+
+
     ?>
     <?php include 'header.php'; ?>
 
@@ -18,17 +32,15 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-10 mx-auto">
-              <h3 class="font-tertiary mb-5">What should be the proper purpose of UI and UX design?</h3>
-              <img src="images/blog/post-1.jpg" alt="post-thumb" class="img-fluid w-100 mb-3">
-              <p class="float-left mr-4">Post by Themefisher</p>
-              <p>May 26, 2017</p>
+              <h3 class="font-tertiary mb-5"><?= $news[0]['title'] ?></h3>
+              <img src="<?= $news[0]['thumbnail'] ?>" alt="<?= $news[0]['title'] ?>" class="img-fluid w-100 mb-3">
+              <p class="float-left mr-4">Post by <?= $users[5]['name']  ?></p>
+              <p><?= $news[0]['new_data'] ?></p>
               <div class="content">
-                <p>Ne erat velit invidunt his. Eum in dicta veniam interesset, harum fuisset te nam ea cu lupta
-                  definitionem
-                  eos. Ei mea dicant meliore, ad mea erant bonorum, in eam iusto invenire. Ei mea dicant meliore, ad
-                  mea erant bonorum, in eam iusto invenire.</p>
+                <p><?= $news[0]['description'] ?></p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -38,36 +50,38 @@
           <div class="row">
             <div class="col-lg-10 mx-auto">
               <div class="p-5 mb-4">
-                <div class="media border-bottom py-4">
-                  <img src="images/user-1.jpg" class="img-fluid align-self-start mr-3" alt="">
-                  <div class="media-body">
-                    <h5 class="mb-0 text-secondary">Carole Marvin.</h5>
-                    <span class="mr-3">15 january 2015 At 10:30 pm</span>
-                    <a href="#" class="btn btn-transparent py-1 px-2 "><i class="ti-share-alt"></i> Reply</a>
-                    <p>Ne erat velit invidunt his. Eum in dicta veniam interesset, harum fuisset te nam ea cu lupta
-                      definitionem.</p>
-                    <div class="media my-5">
-                      <img src="images/user-2.jpg" class="img-fluid align-self-start mr-3" alt="">
+                <h4 class="mb-3 pb-3 text-secondary">Comentarios</h4>
+
+                <?php foreach ($comments as $comment): 
+                  
+                  ?>
+             
+                    <div class="media border-bottom py-4">
+                      <img src="<?= htmlspecialchars($comment['avatar']) ?>" class="rounded-circle img-fluid" style="width: 50px;" alt="User Avatar">
                       <div class="media-body">
-                        <h5 class="mb-0 text-secondary">Jaquan Rolfson.</h5>
-                        <span class="mr-3">15 january 2015 At 10:30 pm</span>
-                        <a href="#" class="btn btn-transparent py-1 px-2 "><i class="ti-share-alt"></i> Reply</a>
-                        <p>Ne erat velit invidunt his. Eum in dicta veniam interesset, harum fuisset te nam ea cu lupta
-                          definitionem.</p>
+                        <h5 class="mb-0 text-secondary"><?= htmlspecialchars($comment['name']) ?></h5>
+                        <span class="mr-3"><?= htmlspecialchars($comment['date']) ?></span>
+                        <a href="#" class="btn btn-transparent py-1 px-2"><i class="ti-share-alt"></i> Reply</a>
+                        <p><?= htmlspecialchars($comment['description']) ?></p>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="media py-4">
-                  <img src="images/user-1.jpg" class="img-fluid align-self-start mr-3" alt="">
-                  <div class="media-body">
-                    <h5 class="mb-0 text-secondary">Bruce Bernier.</h5>
-                    <span class="mr-3">15 january 2015 At 10:30 pm</span>
-                    <a href="#" class="btn btn-transparent py-1 px-2 "><i class="ti-share-alt"></i> Reply</a>
-                    <p>Ne erat velit invidunt his. Eum in dicta veniam interesset, harum fuisset te nam ea cu lupta
-                      definitionem.</p>
-                  </div>
-                </div>
+             
+                  <?php if ($comment['comment_id'] >= 1) { ?>
+
+                    <div class="media my-5">
+                      <img src="<?= htmlspecialchars($comment['avatar']) ?>" class="img-fluid  rounded-circle me-3" style="width: 50px" alt="">
+                      <div class="media-body">
+                        <h5 class="mb-0 text-secondary"><?= htmlspecialchars($comment['name']) ?></h5>
+                        <span class="mr-3"><?= htmlspecialchars($comment['date']) ?></span>
+                        <a href="#" class="btn btn-transparent py-1 px-2 "><i class="ti-share-alt"></i> Reply</a>
+                        <p><?= htmlspecialchars($comment['description']) ?></p>
+                      </div>
+                    </div>
+                  <?php } ?>
+                <?php endforeach; ?>
+
+
+
               </div>
               <h4 class="mb-3 pb-3 text-secondary">Leave a Comment</h4>
               <form action="#" class="row">
@@ -89,49 +103,30 @@
         </div>
       </section>
 
+
+
       <!-- blog -->
       <section class="section">
         <div class="container">
           <div class="row">
             <div class="col-lg-10 mx-auto text-center">
-              <h2>Latest News</h2>
+              <h2>Últimas Noticias</h2>
               <div class="section-border"></div>
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-              <article class="card">
-                <img src="images/blog/post-1.jpg" alt="post-thumb" class="card-img-top mb-2">
-                <div class="card-body p-0">
-                  <time>January 15, 2018</time>
-                  <a href="blog-single" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                    Book Covers Reflect the Design</a>
-                  <a href="#" class="btn btn-transparent">Read more</a>
+            <?php foreach ($news as $item): ?>
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <div class="card hover-shadow">
+                  <img src="<?= htmlspecialchars($item['thumbnail']) ?>" alt="<?= htmlspecialchars($item['title']) ?>" class="card-img-top">
+                  <div class="card-body text-center">
+                    <h4><a class="text-dark" href="blog-single.html"><?= htmlspecialchars($item['title']) ?></a></h4>
+                    <p class="text-gray-600 mb-2"><?= htmlspecialchars($item['subtitle']) ?></p>
+                    <p class="text-xs text-gray-500 mt-2"><?= htmlspecialchars($item['new_data']) ?></p>
+                  </div>
                 </div>
-              </article>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-              <article class="card">
-                <img src="images/blog/post-2.jpg" alt="post-thumb" class="card-img-top mb-2">
-                <div class="card-body p-0">
-                  <time>January 15, 2018</time>
-                  <a href="blog-single" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                    Book Covers Reflect the Design</a>
-                  <a href="#" class="btn btn-transparent">Read more</a>
-                </div>
-              </article>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-              <article class="card">
-                <img src="images/blog/post-3.jpg" alt="post-thumb" class="card-img-top mb-2">
-                <div class="card-body p-0">
-                  <time>January 15, 2018</time>
-                  <a href="blog-single" class="h4 card-title d-block my-3 text-dark hover-text-underline">How These Different
-                    Book Covers Reflect the Design</a>
-                  <a href="#" class="btn btn-transparent">Read more</a>
-                </div>
-              </article>
-            </div>
+              </div>
+            <?php endforeach; ?>
           </div>
         </div>
       </section>
