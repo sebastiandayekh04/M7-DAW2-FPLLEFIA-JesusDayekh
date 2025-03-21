@@ -8,7 +8,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 }
 
 // preparar la consulta
-$stmt = $mysqli->prepare("DELETE FROM TESTIMONIALS WHERE id=?");
+$stmt = $mysqli->prepare("DELETE FROM TESTIMONIALS WHERE  ");
 
 // ligar los parámetros y ejecutar la consulta
 $stmt->bind_param("i", $_GET['id']);

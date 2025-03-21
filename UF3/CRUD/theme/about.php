@@ -61,19 +61,24 @@ $testimonials = $resultTestimonials->fetch_all(MYSQLI_ASSOC);
     </div>
 
     <div class="row"> <!-- Fila contenedora para los usuarios -->
-      <?php foreach ($users as $user): ?>
-        <div class="col-lg-3 col-sm-6"> <!-- 4 elementos por fila -->
-          <div class="card hover-shadow">
-            <img src="<?= htmlspecialchars($user['avatar']) ?>" alt="<?= htmlspecialchars($user['name']) ?>" class="card-img-top">
-            <div class="card-body text-center position-relative zindex-1">
-              <h4><a class="text-dark" href="team-single.html"><?= htmlspecialchars($user['name']) ?></a></h4>
-              <i><?= htmlspecialchars($user['role']) ?></i>
+      <?php
+      // Suponiendo que $news ya contiene todas las noticias ordenadas por fecha descendente
+      $latestUsers = array_slice($users, 0, 4);
+      ?>
+      <div class="row"> <!-- Fila contenedora para los usuarios -->
+        <?php foreach ($latestUsers as $user): ?>
+          <div class="col-lg-3 col-sm-6"> <!-- 4 elementos por fila -->
+            <div class="card hover-shadow">
+              <img src="<?= htmlspecialchars($user['avatar']) ?>" alt="<?= htmlspecialchars($user['name']) ?>" class="card-img-top">
+              <div class="card-body text-center position-relative zindex-1">
+                <h4><a class="text-dark" href="team-single.html"><?= htmlspecialchars($user['name']) ?></a></h4>
+                <i><?= htmlspecialchars($user['role']) ?></i>
+              </div>
             </div>
           </div>
-        </div>
-      <?php endforeach; ?>
-    </div> <!-- Cierre de la fila contenedora -->
-  </div>
+        <?php endforeach; ?>
+      </div> <!-- Cierre de la fila contenedora -->
+    </div>
 </section>
 <!-- /team -->
 

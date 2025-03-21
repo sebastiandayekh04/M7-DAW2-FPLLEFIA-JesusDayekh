@@ -35,7 +35,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Testimonios -->
         <h2 class="text-primary">Testimonios</h2>
-        <a href="../ProyectoBDUF3/testomonials/add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
+        <a href="../add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
 
             <thead class="table-dark">
@@ -55,8 +55,8 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                         <td><?= htmlspecialchars($testimonio['description']) ?></td>
                         <td><?= htmlspecialchars($testimonio['rating']) ?></td>
                         <td>
-                            <a href="../ProyectoBDUF3/testomonials/edit-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="../ProyectoBDUF3/testomonials/delete-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a href="../edit-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="../delete-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
