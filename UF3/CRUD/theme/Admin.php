@@ -35,7 +35,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Testimonios -->
         <h2 class="text-primary">Testimonios</h2>
-        <a href="../add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
+        <a href="add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
 
             <thead class="table-dark">
@@ -55,8 +55,8 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                         <td><?= htmlspecialchars($testimonio['description']) ?></td>
                         <td><?= htmlspecialchars($testimonio['rating']) ?></td>
                         <td>
-                            <a href="../edit-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="../delete-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a href="edit-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="delete-testimonials.php?id=<?= $testimonio['id'] ?>" onclick="return confirm('Esta seguro que desea borrarlo?')" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -65,7 +65,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Noticias -->
         <h2 class="text-primary">Noticias</h2>
-        <a href="../ProyectoBDUF3/news/add-news.php?id=<?= $news['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
+        <a href="add-news.php?id=<?= $news['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -82,8 +82,8 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                         <td><?= htmlspecialchars($news['description']) ?></td>
                         <td><?= htmlspecialchars($news['date']) ?></td>
                         <td>
-                            <a href="../ProyectoBDUF3/news/edit-news.php?id=<?= $news['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="../ProyectoBDUF3/news/delete-news.php?id=<?= $news['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a href="edit-news.php?id=<?= $news['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="delete-news.php?id=<?= $news['id'] ?>" onclick="return confirm('Esta seguro que desea borrarlo?')" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
@@ -92,7 +92,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Proyectos -->
         <h2 class="text-primary">Proyectos</h2>
-        <a href="../ProyectoBDUF3/projects/add-projects.php?id=<?= $projects['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
+        <a href="add-projects.php?id=<?= $projects['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
                 <tr>
@@ -109,8 +109,8 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                         <td><?= htmlspecialchars($projects['description']) ?></td>
                         <td><?= htmlspecialchars($projects['date']) ?></td>
                         <td>
-                            <a href="../ProyectoBDUF3/projects/edit-projects.php?id=<?= $projects['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                            <a href="../ProyectoBDUF3/projects/delete-projects.php?id=<?= $projects['id'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                            <a href="edit-projects.php?id=<?= $projects['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="delete-projects.php?id=<?= $projects['id'] ?>" onclick="return confirm('Esta seguro que desea borrarlo?')" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

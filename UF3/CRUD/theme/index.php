@@ -243,14 +243,18 @@ $users = $resultUsers->fetch_all(MYSQLI_ASSOC);
         </div>
       </div>
 
+      <?php
+      // Suponiendo que $news ya contiene todas las noticias ordenadas por fecha descendente
+      $latestproject = array_slice($project, 0, 3);
+      ?>
       <div class="row no-gutters shuffle-wrapper">
         <!-- AQUI PONDRAS UN FOREACH DE PHP E IRAS RECORRIENDO EL ARRAY PROJECTS -->
-        <?php foreach ($project as $projects): ?>
+        <?php foreach ($latestproject as $projects): ?>
           <div class="col-lg-4 col-md-6 shuffle-item">
             <div class="project-item">
-              <img src="<?= htmlspecialchars($projects['thumbnail']) ?>" alt="<?= htmlspecialchars($projects['title']) ?>" class="img-fluid w-100">
+              <img src="<?= htmlspecialchars($projects['thumbnail']) ?>" alt="<?= htmlspecialchars($projects['description']) ?>" class="img-fluid w-100">
               <div class="project-hover bg-secondary px-4 py-3">
-                <p class="text-white h4"><?= htmlspecialchars($projects['description']) ?></p>
+                <p class="text-white h4"><?= htmlspecialchars($projects['title']) ?></p>
                 <a href="#"><i class="ti-link icon-xs text-white"><?= htmlspecialchars($projects['url']) ?></i></a>
               </div>
             </div>

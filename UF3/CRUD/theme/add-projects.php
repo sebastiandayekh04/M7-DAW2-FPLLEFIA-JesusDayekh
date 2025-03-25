@@ -12,14 +12,14 @@ if ($_SESSION['user_rol'] !== 'admin') {
 //2. Comprobar si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //3. Recoger datos del formulario
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
+    $title = $_POST['title'];
+    $url = $_POST['url'];
     $description = $_POST['description'];
-    $rating = $_POST['rating'];
+    $thumbnail = $_POST['thumbnail'];
 
     //4. Preparar la consulta antes de insertar
     $stmt = $mysqli->prepare(
-        "INSERT INTO TESTIMONIALS (name, surname, description, rating) 
+        "INSERT INTO PROJECTS (title, url, description, thumbnail)
         VALUES (?, ?, ?, ?)"
     );
 
@@ -29,33 +29,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     //6. Bindear los parámetros    
-    $stmt->bind_param('sssi', $name, $surname, $description, $rating);
+    $stmt->bind_param('ssss', $title, $url, $description, $thumbnail);
 
     // 7. Ejecutar la consulta
     if ($stmt->execute()) {
-        echo 'Testimonio agregado con éxito';
+        echo 'Proyecto agregado con éxito';
     } else {
-        echo 'Error al agregar el testimonio: ' . $mysqli->error;
+        echo 'Error al agregar el Proyecto: ' . $mysqli->error;
     }
 
     // 8. Cerrar la declaración
     $stmt->close();
     $mysqli->close();
 }
-
-
-
 ?>
-
-
-
 
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Testimonios</title>
+    <title>Agregar Proyecto</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -63,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="bg-light">
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Agregar Testimonios</h1>
+            <h1 class="text-primary">Agregar Proyectos</h1>
             <a href="Admin.php" class="btn btn-secondary">Volver al panel de administración</a>
         </div>
 
@@ -71,13 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card-body">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
+                        <label for="title" class="form-label">Titulo</label>
+                        <input type="text" name="title" id="title" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="surname" class="form-label">Apellido</label>
-                        <input type="text" name="surname" id="surname" class="form-control" required>
+                        <label for="url" class="form-label">Link</label>
+                        <input type="text" name="url" id="url" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
@@ -86,11 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="mb-3">
-                        <label for="rating" class="form-label">Calificación (1 a 5)</label>
-                        <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" step="1" required>
+                        <label for="thumbnail" class="form-label">Foto (URL)</label>
+                        <input type="text" name="thumbnail" id="thumbnail" class="form-control" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Agregar Testimonio</button>
+                    <button type="submit" class="btn btn-primary w-100">Agregar Proyectos</button>
                 </form>
             </div>
         </div>

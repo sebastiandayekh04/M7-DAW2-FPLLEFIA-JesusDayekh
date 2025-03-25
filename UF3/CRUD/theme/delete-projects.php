@@ -9,7 +9,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 }
 
 // preparar la consulta
-$stmt = $mysqli->prepare("DELETE FROM TESTIMONIALS WHERE id = ?");
+$stmt = $mysqli->prepare("DELETE FROM PROJECTS WHERE id = ?");
 
 
 // ligar los parámetros y ejecutar la consulta
@@ -21,7 +21,7 @@ if ($stmt->execute()) {
     header("Location: Admin.php");
 } else {
     // mostrar un mensaje de error
-    echo '<p>Error al eliminar el testimonio: ' . $stmt->error . '</p>';
+    echo '<p>Error al eliminar la noticia: ' . $stmt->error . '</p>';
     echo '<a href="Admin.php">Volver al panel de administrador</a>';
 }
 $stmt->close();

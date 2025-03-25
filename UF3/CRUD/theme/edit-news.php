@@ -9,7 +9,7 @@ if ($_SESSION['user_rol'] !== 'admin') {
     exit;
 }
 if (empty($_GET['id'])) {
-    echo 'No se ha recibido el ID del testimonio a Actualizar';
+    echo 'No se ha recibido el ID de la noticia a actualizar';
     exit;
 }
 $id = $_GET['id'];
@@ -17,14 +17,14 @@ $id = $_GET['id'];
 //2. Comprobar si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //3. Recoger datos del formulario
-    $name = $_POST['name'];
-    $surname = $_POST['surname'];
+    $title = $_POST['title'];
+    $subtitle = $_POST['subtitle'];
     $description = $_POST['description'];
-    $rating = $_POST['rating'];
+    $thumbnail = $_POST['thumbnail'];
 
     //4. Preparar la consulta antes de insertar
     $stmt = $mysqli->prepare(
-        "UPDATE TESTIMONIALS  set name = ?, surname = ?, description = ?, rating = ? where id = ?"
+        "UPDATE NEWS  set title = ?, subtitle = ?, description = ?, thumbnail = ? where id = ?"
     );
 
     //5. Comprobar que la preparación de la consulta tuvo éxito
@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     //6. Bindear los parámetros    
-    $stmt->bind_param('sssii', $name, $surname, $description, $rating, $id);
+    $stmt->bind_param('ssssi', $title, $subtitle, $description, $thumbnail, $id);
 
     // 7. Ejecutar la consulta
     if ($stmt->execute()) {
-        echo 'Testimonio actualizado con éxito';
+        echo 'Noticia actualizado con éxito';
     } else {
-        echo 'Error al editar el testimonio: ' . $mysqli->error;
+        echo 'Error al editar la noticia: ' . $mysqli->error;
     }
 
     // 8. Cerrar la declaración
@@ -47,28 +47,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Conectar a la base de datos y recuperar testimonios
-$result = $mysqli->prepare("SELECT * FROM TESTIMONIALS where id = ?");
+$result = $mysqli->prepare("SELECT * FROM NEWS where id = ?");
 $result->bind_param('i', $_GET['id']);
 $result->execute();
-$testimonios = $result->get_result();
-if ($testimonios->num_rows === 0) {
-    echo 'No se ha encontrado el testimonio a actualizar';
+$noticias = $result->get_result();
+if ($noticias->num_rows === 0) {
+    echo 'No se ha encontrado la noticia a actualizar';
     exit;
 }
 
-$testimonio = $testimonios->fetch_object();
+$noticia = $noticias->fetch_object();
 $mysqli->close();
 ?>
-
-
-
 
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Testimonios</title>
+    <title>Editar Noticias</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -77,7 +74,7 @@ $mysqli->close();
 <body class="bg-light">
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="text-primary">Editar Testimonios</h1>
+            <h1 class="text-primary">Editar Noticias</h1>
             <a href="Admin.php" class="btn btn-secondary">Volver al panel de administración</a>
         </div>
 
@@ -85,23 +82,23 @@ $mysqli->close();
             <div class="card-body">
                 <form action="" method="POST">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" name="name" id="name" class="form-control" required value="<?php echo $testimonio->name ?>">
+                        <label for="title" class="form-label">Titulo</label>
+                        <input type="text" name="title" id="title" class="form-control" required value="<?php echo $noticia->title ?>">
                     </div>
 
                     <div class="mb-3">
-                        <label for="surname" class="form-label">Apellido</label>
-                        <input type="text" name="surname" id="surname" class="form-control" required value="<?php echo $testimonio->surname ?>">
+                        <label for="subtitle" class="form-label">Subtitulo</label>
+                        <input type="text" name="subtitle" id="subtitle" class="form-control" required value="<?php echo $noticia->subtitle ?>">
                     </div>
 
                     <div class="mb-3">
                         <label for="description" class="form-label">Descripción</label>
-                        <textarea name="description" id="description" class="form-control" rows="4" required><?php echo $testimonio->description ?></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="4" required><?php echo $noticia->description ?></textarea>
                     </div>
 
                     <div class="mb-3">
-                        <label for="rating" class="form-label">Calificación (1 a 5)</label>
-                        <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" step="1" required value="<?php echo $testimonio->rating ?>">
+                        <label for="thumbnail" class="form-label">Foto (URL)</label>
+                        <input type="text" name="thumbnail" id="thumbnail" class="form-control" required value="<?php echo $noticia->thumbnail ?>">
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>

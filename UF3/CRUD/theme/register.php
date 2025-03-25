@@ -11,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $avatar = $_POST['avatar'];    // Recoger avatar (opcional)
     $age = $_POST['age'];          // Recoger edad
-}
 
+    
 // 2. Cifrar la contraseña con password_hash
 $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
@@ -41,6 +41,8 @@ if ($stmt->execute()) {
 // 7. Cerrar la declaración
 $stmt->close();
 $mysqli->close();
+
+}
 
 ?>
 
@@ -96,6 +98,10 @@ $mysqli->close();
                 </div>
                 <input class="bg-warning btn mt-2" type="submit" value="Registrarse">
             </form>
+            <div class="text-center">
+                <p>¿Ya tienes cuenta?</p>
+                <a href="login.php">Iniciar Sesion</a>
+                </div>
         </div>
     </div>
 </body>
