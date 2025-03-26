@@ -57,7 +57,7 @@ require_once('config.php');
                         <a class="nav-link" href="blog.php">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="portfolio.php">Portfolio</a>
+                        <a class="nav-link" href="portafolio.php">Portafolio</a>
                     </li>
                     <nav class="d-flex align-items-center">
                         <div class="dropdown">

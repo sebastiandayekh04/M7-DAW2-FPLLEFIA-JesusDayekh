@@ -24,6 +24,11 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .th-actions{
+            width: 8vw;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -44,7 +49,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                     <th>Apellido</th>
                     <th>Descripción</th>
                     <th>Rating</th>
-                    <th>Acciones</th>
+                    <th class="th-actions">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,7 +77,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                     <th>Título</th>
                     <th>Descripción</th>
                     <th>Fecha</th>
-                    <th>Acciones</th>
+                    <th class="th-actions">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -99,7 +104,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                     <th>Título</th>
                     <th>Descripción</th>
                     <th>Fecha</th>
-                    <th>Acciones</th>
+                    <th class="th-actions">Acciones</th>
                 </tr>
             </thead>
             <tbody>
