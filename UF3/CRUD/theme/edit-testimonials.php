@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $surname = $_POST['surname'];
     $description = $_POST['description'];
     $rating = $_POST['rating'];
+    $old_photo = $_POST['old-photo'];
 
      //3.1 Procesar el archivo de imagen
      if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {

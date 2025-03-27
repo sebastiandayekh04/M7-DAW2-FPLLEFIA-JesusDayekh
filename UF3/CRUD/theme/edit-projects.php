@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $url = $_POST['url'];
     $description = $_POST['description'];
+    $old_thumbnail = $_POST['old-thumbnail'];
     
     //3.1 Procesar el archivo de imagen
     if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === UPLOAD_ERR_OK) {

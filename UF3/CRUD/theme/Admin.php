@@ -36,7 +36,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Testimonios -->
         <h2 class="text-primary">Testimonios</h2>
-        <a href="add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
+        <a href="add-testimonials.php" class="btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered table-custom">
 
             <thead class="table-dark">
@@ -68,7 +68,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Noticias -->
         <h2 class="text-primary">Noticias</h2>
-        <a href="add-news.php?id=<?= $news['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
+        <a href="add-news.php" class=" btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered table-custom">
             <thead class="table-dark">
                 <tr>
@@ -95,7 +95,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
 
         <!-- Proyectos -->
         <h2 class="text-primary">Proyectos</h2>
-        <a href="add-projects.php?id=<?= $projects['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
+        <a href="add-projects.php?>" class=" btn btn-primary btn-sm">Añadir</a>
         <table class="table table-striped table-bordered table-custom">
             <thead class="table-dark">
                 <tr>
