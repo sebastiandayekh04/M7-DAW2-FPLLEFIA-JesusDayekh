@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //3. Recoger datos del formulario
     $title = $_POST['title'];
     $subtitle = $_POST['subtitle'];
-    $thumbnail = $_POST['thumbnail'];
+    $thumbnail = "";
     $description = $_POST['description'];
     $new_data = date('Y-m-d');
 
