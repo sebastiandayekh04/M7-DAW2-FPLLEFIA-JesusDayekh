@@ -72,7 +72,7 @@ $testimonials = $resultTestimonials->fetch_all(MYSQLI_ASSOC);
               <img src="<?= htmlspecialchars($user['avatar']) ?>" alt="<?= htmlspecialchars($user['name']) ?>" class="card-img-top">
               <div class="card-body text-center position-relative zindex-1">
                 <h4><a class="text-dark" href="team-single.html"><?= htmlspecialchars($user['name']) ?></a></h4>
-                <i><?= htmlspecialchars($user['role']) ?></i>
+                <i><?= htmlspecialchars($user['rol']) ?></i>
               </div>
             </div>
           </div>

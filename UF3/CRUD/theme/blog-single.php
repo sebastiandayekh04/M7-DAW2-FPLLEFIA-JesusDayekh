@@ -3,9 +3,11 @@
 
 require_once('config.php');
 
-//agarramos las news de bbdd
+//agarramos las news  y users haciendo un join de bbdd
 $resultNews = $mysqli->query('SELECT * FROM NEWS where id=' . $_GET['id']);
 $news = $resultNews->fetch_all(MYSQLI_ASSOC);
+
+//
 
 // Obtener los comentarios con la información del usuario
 $resultComments = $mysqli->query(
@@ -35,7 +37,7 @@ $comments = $resultComments->fetch_all(MYSQLI_ASSOC);
         <div class="col-lg-10 mx-auto">
           <h3 class="font-tertiary mb-5"><?= $news[0]['title'] ?></h3>
           <img src="<?= $news[0]['thumbnail'] ?>" alt="<?= $news[0]['title'] ?>" class="img-fluid w-100 mb-3">
-          <p class="float-left mr-4">Post by <?= $users[5]['name']  ?></p>
+          <p class="float-left mr-4">Post by Admin</p>
           <p><?= $news[0]['new_data'] ?></p>
           <div class="content">
             <p><?= $news[0]['description'] ?></p>
