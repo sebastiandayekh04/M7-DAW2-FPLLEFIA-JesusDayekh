@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'config.php';
+// Definir la carpeta dinde se guardarán las fotos
+$uploadDir = 'uploads/';
 
 //1. Verifica si el rol es administrador
 if ($_SESSION['user_rol'] !== 'admin') {
@@ -14,11 +16,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //3. Recoger datos del formulario
     $title = $_POST['title'];
     $subtitle = $_POST['subtitle'];
-    $description = $_POST['description'];
     $thumbnail = $_POST['thumbnail'];
-
+    $description = $_POST['description'];
     $new_data = date('Y-m-d');
 
+    //3.1 Procesar el archivo de imagen
+    if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['thumbnail']['tmp_name'];
+        $fileName = $_FILES['thumbnail']['name'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        // Extensiones permitidas
+        $allowedfileExtensions = array('jpg', 'jpeg', 'png', 'gif');
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            // Renombrar el archivo para evitar duplicados
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+
+            // Ruta de destino
+            $uploadFileDir = './uploads/';
+            $dest_path = $uploadFileDir . $newFileName;
+
+            // Mover el archivo a la carpeta de destino
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $thumbnail = $dest_path; // Guardar la ruta en la base de datos
+            } else {
+                echo 'Error al mover el archivo a la carpeta de destino.';
+                exit;
+            }
+        } else {
+            echo 'Error: Solo se permiten archivos de imagen (jpg, jpeg, png, gif).';
+            exit;
+        }
+    } else {
+        echo 'Error al subir la imagen.';
+        exit;
+    }
+
+        
     //4. Preparar la consulta antes de insertar
     $stmt = $mysqli->prepare(
         "INSERT INTO NEWS (title, subtitle, description, thumbnail, new_data )
@@ -71,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="title" class="form-label">Titulo</label>
                         <input type="text" name="title" id="title" class="form-control" required>
@@ -88,8 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="mb-3">
-                        <label for="thumbnail" class="form-label">Foto (URL)</label>
-                        <input type="text" name="thumbnail" id="thumbnail" class="form-control" required>
+                        <label for="thumbnail" class="form-label">Foto (Subir archivo)</label>
+                        <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Agregar Noticias</button>

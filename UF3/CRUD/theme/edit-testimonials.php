@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'config.php';
+$uploadDir = 'uploads/';
 
 //1. Verifica si el rol es administrador
 if ($_SESSION['user_rol'] !== 'admin') {
@@ -22,9 +23,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $rating = $_POST['rating'];
 
+     //3.1 Procesar el archivo de imagen
+     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['photo']['tmp_name'];
+        $fileName = $_FILES['photo']['name'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        // Extensiones permitidas
+        $allowedfileExtensions = array('jpg', 'jpeg', 'png', 'gif');
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            // Renombrar el archivo para evitar duplicados
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+
+            // Ruta de destino
+            $uploadFileDir = './uploads/';
+            $dest_path = $uploadFileDir . $newFileName;
+
+            // Mover el archivo a la carpeta de destino
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $photo = $dest_path; // Guardar la ruta en la base de datos
+                if (file_exists($old_photo) && $old_photo !== $photo) {
+                    unlink($old_photo);
+                }
+            } else {
+                echo 'Error al mover el archivo a la carpeta de destino.';
+                exit;
+            }
+        } else {
+            echo 'Error: Solo se permiten archivos de imagen (jpg, jpeg, png, gif).';
+            exit;
+        }
+    } else if ($old_photo !== null && $old_photo !== '') {
+        $photo = $old_photo;
+    } else {
+        echo 'Error al subir la imagen.';
+        exit;
+    }
+
     //4. Preparar la consulta antes de insertar
     $stmt = $mysqli->prepare(
-        "UPDATE TESTIMONIALS  set name = ?, surname = ?, description = ?, rating = ? where id = ?"
+        "UPDATE TESTIMONIALS  set name = ?, surname = ?, description = ?, photo = ?, rating = ? where id = ?"
     );
 
     //5. Comprobar que la preparación de la consulta tuvo éxito
@@ -33,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     //6. Bindear los parámetros    
-    $stmt->bind_param('sssii', $name, $surname, $description, $rating, $id);
+    $stmt->bind_param('ssssii', $name, $surname, $description, $photo, $rating, $id);
 
     // 7. Ejecutar la consulta
     if ($stmt->execute()) {
@@ -83,7 +122,7 @@ $mysqli->close();
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="text" name="name" id="name" class="form-control" required value="<?php echo $testimonio->name ?>">
@@ -102,6 +141,19 @@ $mysqli->close();
                     <div class="mb-3">
                         <label for="rating" class="form-label">Calificación (1 a 5)</label>
                         <input type="number" name="rating" id="rating" class="form-control" min="1" max="5" step="1" required value="<?php echo $testimonio->rating ?>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="old-photo" class="form-label">Foto (Actual)</label>
+                        <br>
+                        <input type="hidden" name="old-photo" value="<?php echo $testimonio->photo ?>">
+                        <img src="<?php echo $testimonio->photo ?>" alt="" style="width: 5vw; height: 5vw;">
+                        <br>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Cambiar imagen</label>
+                        <input type="file" name="photo" id="photo" class="form-control" accept="image/*">
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>

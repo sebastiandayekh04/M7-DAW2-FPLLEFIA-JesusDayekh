@@ -24,11 +24,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel de Administrador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .th-actions{
-            width: 8vw;
-        }
-    </style>
+    <link href="css/style-custom.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
@@ -41,14 +37,15 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
         <!-- Testimonios -->
         <h2 class="text-primary">Testimonios</h2>
         <a href="add-testimonials.php?id=<?= $testimonio['id'] ?>" class="btn btn-primary btn-sm">Añadir</a>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered table-custom">
 
             <thead class="table-dark">
                 <tr>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Descripción</th>
-                    <th>Rating</th>
+                    <th class="th-width-10">Nombre</th>
+                    <th class="th-width-10">Apellido</th>
+                    <th class="th-width-12">Foto</th>
+                    <th class="th-width-30">Descripción</th>
+                    <th class="th-width-4">Rating</th>
                     <th class="th-actions">Acciones</th>
                 </tr>
             </thead>
@@ -57,6 +54,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                     <tr>
                         <td><?= htmlspecialchars($testimonio['name']) ?></td>
                         <td><?= htmlspecialchars($testimonio['surname']) ?></td>
+                        <td><img src="<?= $testimonio['photo'] ?>" alt="<?= htmlspecialchars($testimonio['name']) ?>" class="img-table"/></td>
                         <td><?= htmlspecialchars($testimonio['description']) ?></td>
                         <td><?= htmlspecialchars($testimonio['rating']) ?></td>
                         <td>
@@ -71,13 +69,13 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
         <!-- Noticias -->
         <h2 class="text-primary">Noticias</h2>
         <a href="add-news.php?id=<?= $news['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered table-custom">
             <thead class="table-dark">
                 <tr>
-                    <th>Título</th>
-                    <th>Descripción</th>
-                    <th>Fecha</th>
-                    <th class="th-actions">Acciones</th>
+                    <th  class="th-width-20">Título</th>
+                    <th  class="th-width-34">Descripción</th>
+                    <th  class="th-width-12">Foto</th>
+                    <th  class="th-actions">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,7 +83,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                     <tr>
                         <td><?= htmlspecialchars($news['title']) ?></td>
                         <td><?= htmlspecialchars($news['description']) ?></td>
-                        <td><?= htmlspecialchars($news['date']) ?></td>
+                        <td><img src="<?= $news['thumbnail'] ?>" alt="<?= htmlspecialchars($news['title']) ?>" class="img-table"/></td>
                         <td>
                             <a href="edit-news.php?id=<?= $news['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
                             <a href="delete-news.php?id=<?= $news['id'] ?>" onclick="return confirm('Esta seguro que desea borrarlo?')" class="btn btn-danger btn-sm">Eliminar</a>
@@ -98,12 +96,12 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
         <!-- Proyectos -->
         <h2 class="text-primary">Proyectos</h2>
         <a href="add-projects.php?id=<?= $projects['id'] ?>" class=" btn btn-primary btn-sm">Añadir</a>
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered table-custom">
             <thead class="table-dark">
                 <tr>
-                    <th>Título</th>
-                    <th>Descripción</th>
-                    <th>Fecha</th>
+                    <th  class="th-width-20">Título</th>
+                    <th  class="th-width-34">Descripción</th>
+                    <th  class="th-width-12">Foto</th>
                     <th class="th-actions">Acciones</th>
                 </tr>
             </thead>
@@ -112,7 +110,7 @@ $resultProjects = $mysqli->query("SELECT * FROM PROJECTS");
                     <tr>
                         <td><?= htmlspecialchars($projects['title']) ?></td>
                         <td><?= htmlspecialchars($projects['description']) ?></td>
-                        <td><?= htmlspecialchars($projects['date']) ?></td>
+                        <td><img src="<?= $projects['thumbnail'] ?>" alt="<?= htmlspecialchars($projects['title']) ?>" class="img-table"/></td>
                         <td>
                             <a href="edit-projects.php?id=<?= $projects['id'] ?>" class="btn btn-warning btn-sm">Editar</a>
                             <a href="delete-projects.php?id=<?= $projects['id'] ?>" onclick="return confirm('Esta seguro que desea borrarlo?')" class="btn btn-danger btn-sm">Eliminar</a>

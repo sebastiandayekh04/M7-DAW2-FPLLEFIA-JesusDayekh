@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'config.php';
+// Definir la carpeta dinde se guardarán las fotos
+$uploadDir = 'uploads/';
 
 //1. Verifica si el rol es administrador
 if ($_SESSION['user_rol'] !== 'admin') {
@@ -20,7 +22,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $url = $_POST['url'];
     $description = $_POST['description'];
-    $thumbnail = $_POST['thumbnail'];
+    
+    //3.1 Procesar el archivo de imagen
+    if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['thumbnail']['tmp_name'];
+        $fileName = $_FILES['thumbnail']['name'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        // Extensiones permitidas
+        $allowedfileExtensions = array('jpg', 'jpeg', 'png', 'gif');
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            // Renombrar el archivo para evitar duplicados
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+
+            // Ruta de destino
+            $uploadFileDir = './uploads/';
+            $dest_path = $uploadFileDir . $newFileName;
+
+            // Mover el archivo a la carpeta de destino
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $thumbnail = $dest_path; // Guardar la ruta en la base de datos
+                if (file_exists($old_thumbnail) && $old_thumbnail !== $thumbnail) {
+                    unlink($old_thumbnail);
+                }
+            } else {
+                echo 'Error al mover el archivo a la carpeta de destino.';
+                exit;
+            }
+        } else {
+            echo 'Error: Solo se permiten archivos de imagen (jpg, jpeg, png, gif).';
+            exit;
+        }
+    } else if ($old_thumbnail !== null && $old_thumbnail !== '') {
+        $thumbnail = $old_thumbnail;
+    } else {
+        echo 'Error al subir la imagen.';
+        exit;
+    }
+
 
     //4. Preparar la consulta antes de insertar
     $stmt = $mysqli->prepare(
@@ -80,7 +120,7 @@ $mysqli->close();
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="title" class="form-label">Titulo</label>
                         <input type="text" name="title" id="title" class="form-control" required value="<?php echo $proyecto->title ?>">
@@ -97,8 +137,16 @@ $mysqli->close();
                     </div>
 
                     <div class="mb-3">
-                        <label for="thumbnail" class="form-label">Foto (URL)</label>
-                        <input type="text" name="thumbnail" id="thumbnail" class="form-control" required value="<?php echo $proyecto->thumbnail ?>">
+                        <label for="old-thumbnail" class="form-label">Foto (Actual)</label>
+                        <br>
+                        <input type="hidden" name="old-thumbnail" value="<?php echo $proyecto->thumbnail ?>">
+                        <img src="<?php echo $proyecto->thumbnail ?>" alt="" style="width: 5vw; height: 5vw;">
+                        <br>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="thumbnail" class="form-label">Cambiar imagen</label>
+                        <input type="file" name="thumbnail" id="thumbnail" class="form-control" accept="image/*">
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100">Guardar Cambios</button>
